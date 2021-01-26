@@ -1,0 +1,11 @@
+.button {
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  color: #f47d31;
+  cursor: pointer;
+  transition: transform 100ms ease-in;
+}
+
+.button:hover {
+  transform: scale(1.03);
+}

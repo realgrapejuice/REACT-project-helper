@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 600px;
+  background-color: #fff;
+  border-radius: 12px;
+  z-index: 300;
+  padding: 2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.header {
+  width: 100%;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.header > h1 {
+  margin-bottom: 2rem;
+}
+
+.header > span {
+  margin-bottom: 2rem;
+  margin-right: 5px;
+  font-size: 0.9em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form input {
+  padding: 1rem;
+  font-size: 1rem;
+  border-bottom: 1px solid #413d45;
+}
+
+.form .mail {
+  margin-bottom: 1.5rem;
+}
+
+.forget {
+  text-align: left;
+  padding: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  width: 170px;
+  cursor: pointer;
+  transition: transform 150ms ease-in;
+  margin-bottom: 1rem;
+}
+
+.forget:hover {
+  transform: scale(1.05);
+}
+
+.login {
+  padding: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: #ffce00;
+  border-radius: 8px;
+  transition: opacity 150ms ease-in;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.login:hover {
+  opacity: 0.8;
+}

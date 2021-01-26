@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container > button {
+  padding: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: opacity 150ms ease-in;
+  cursor: pointer;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.container > button:hover {
+  opacity: 0.8;
+}
+
+.google {
+  background-color: #dc4e41;
+}
+
+.github {
+  background-color: #2ebc4f;
+}
