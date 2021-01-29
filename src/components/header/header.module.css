@@ -1,0 +1,10 @@
+.container {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  z-index: 400;
+  padding: 1rem;
+  background-color: #fff;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import Auth from "../aut/auth";
-import SignUp from "../signUp/signUp";
+import SignUpBtn from "../signUpBtn/signUpBtn";
 import styles from "./form.module.css";
 
 const Form = (props) => {
@@ -9,7 +9,7 @@ const Form = (props) => {
       <header className={styles.header}>
         <h1>Log In</h1>
         <span>New to StepbyStep?</span>
-        <SignUp />
+        <SignUpBtn />
       </header>
       <form className={styles.form}>
         <input
