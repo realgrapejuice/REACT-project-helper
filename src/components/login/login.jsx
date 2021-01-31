@@ -3,7 +3,7 @@ import Auth from "./aut/auth";
 import Form from "./form/form";
 import styles from "./login.module.css";
 
-const LogIn = (props) => {
+const LogIn = ({ authService }) => {
   const createSquare = () => {
     const container = document.querySelector("#container");
     const square = document.createElement("span");
@@ -32,7 +32,7 @@ const LogIn = (props) => {
 
   return (
     <main id="container" className={styles.container}>
-      <Form />
+      <Form authService={authService} />
     </main>
   );
 };

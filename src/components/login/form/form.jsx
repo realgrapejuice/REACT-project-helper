@@ -3,7 +3,7 @@ import Auth from "../aut/auth";
 import SignUpBtn from "../signUpBtn/signUpBtn";
 import styles from "./form.module.css";
 
-const Form = (props) => {
+const Form = ({ authService }) => {
   return (
     <section className={styles.container}>
       <header className={styles.header}>
@@ -30,7 +30,7 @@ const Form = (props) => {
         <button className={styles.login} type="submit">
           Log In
         </button>
-        <Auth />
+        <Auth authService={authService} />
       </form>
     </section>
   );
