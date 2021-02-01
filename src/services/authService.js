@@ -12,19 +12,22 @@ class AuthService {
     }
   }
 
-  logInWithMail(userMail, userPW) {
-    return firebaseAuth //
-      .signInWithEmailAndPassword(userMail, userPW)
-      .then((result) => console.log(result));
-  }
-
   createAccount(userMail, userPW) {
     const user = userMail.split("@")[0];
     firebaseAuth //
       .createUserWithEmailAndPassword(userMail, userPW)
       .then(window.alert(`Account created Sucessfully ${user}`))
       .catch((error) => {
-        throw new Error(error);
+        throw Error(error);
+      });
+  }
+
+  logInMail(userMail, userPW) {
+    return firebaseAuth //
+      .signInWithEmailAndPassword(userMail, userPW)
+      .then((result) => console.log(result))
+      .catch((error) => {
+        throw Error(error);
       });
   }
 
