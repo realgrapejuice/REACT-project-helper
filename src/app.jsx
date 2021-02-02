@@ -3,6 +3,7 @@ import Header from "./components/header/header";
 import LogIn from "./components/login/login";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import SignUp from "./components/signUp/signUp";
+import FindPW from "./components/login/findPW/findPW";
 
 function App({ authService }) {
   //여기서 로그인 status를 분리하는 로직을 구성하고 반영하는 것이 좋을듯
@@ -14,6 +15,9 @@ function App({ authService }) {
         <Switch>
           <Route exact path={["/", "/login"]}>
             <LogIn authService={authService} />
+          </Route>
+          <Route path="/login/forgot-password">
+            <FindPW authService={authService} />
           </Route>
           <Route path="/about"></Route>
           <Route path="/method"></Route>

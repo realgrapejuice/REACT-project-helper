@@ -66,6 +66,8 @@
   cursor: pointer;
   transition: transform 150ms ease-in;
   margin-bottom: 1rem;
+  text-decoration: none;
+  color: #000;
 }
 
 .forget:hover {

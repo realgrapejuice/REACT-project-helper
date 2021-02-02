@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useRouteMatch } from "react-router-dom";
 import Auth from "../aut/auth";
 import styles from "./form.module.css";
 
@@ -12,11 +13,12 @@ const Form = ({ authService }) => {
     const userPW = passwordRef.current.value;
     authService //
       .logInMail(userMail, userPW)
-      .then((result) => console.log(result))
-      .catch(alert("Unvalid password check it again!"));
+      .then((result) => console.log(result));
     mailRef.current.value = "";
     passwordRef.current.value = "";
   };
+
+  const { url } = useRouteMatch();
 
   return (
     <section className={styles.container}>
@@ -42,9 +44,9 @@ const Form = ({ authService }) => {
           placeholder="Password"
           required
         />
-        <button className={styles.forget} type="button">
+        <a className={styles.forget} href={`${url}/forgot-password`}>
           Forgot Password?
-        </button>
+        </a>
         <button className={styles.login} type="submit">
           Log In
         </button>

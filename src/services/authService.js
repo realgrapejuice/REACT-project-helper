@@ -35,6 +35,10 @@ class AuthService {
     const authProvider = this.getAuthProvider(providerName);
     return firebaseAuth.signInWithPopup(authProvider);
   }
+
+  resetPW(emailAddress) {
+    return firebaseAuth.sendPasswordResetEmail(emailAddress);
+  }
 }
 
 export default AuthService;
