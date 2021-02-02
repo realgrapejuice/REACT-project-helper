@@ -16,7 +16,7 @@ function App({ authService }) {
           <Route exact path={["/", "/login"]}>
             <LogIn authService={authService} />
           </Route>
-          <Route path="/login/forgot-password">
+          <Route path="/forgot-password">
             <FindPW authService={authService} />
           </Route>
           <Route path="/about"></Route>

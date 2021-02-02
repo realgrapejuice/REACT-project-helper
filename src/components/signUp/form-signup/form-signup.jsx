@@ -20,9 +20,9 @@ const FormSignUp = ({ authService }) => {
       <header className={styles.header}>
         <h1>Sign Up</h1>
         <span>Already Have An Account?</span>
-        <button className={styles.button} type="button">
+        <a className={styles.button} href="/login">
           Log In
-        </button>
+        </a>
       </header>
       <form className={styles.form} onSubmit={handleCreateAccount}>
         <input

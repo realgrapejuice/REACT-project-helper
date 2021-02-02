@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { useRouteMatch } from "react-router-dom";
 import Auth from "../aut/auth";
 import styles from "./form.module.css";
 
@@ -18,16 +17,14 @@ const Form = ({ authService }) => {
     passwordRef.current.value = "";
   };
 
-  const { url } = useRouteMatch();
-
   return (
     <section className={styles.container}>
       <header className={styles.header}>
         <h1>Log In</h1>
         <span>New to StepbyStep?</span>
-        <button className={styles.button} type="button">
+        <a className={styles.signup} href="/signup">
           Sign Up For Free
-        </button>
+        </a>
       </header>
       <form className={styles.form} onSubmit={handleLogIn}>
         <input
@@ -44,7 +41,7 @@ const Form = ({ authService }) => {
           placeholder="Password"
           required
         />
-        <a className={styles.forget} href={`${url}/forgot-password`}>
+        <a className={styles.forget} href="/forgot-password">
           Forgot Password?
         </a>
         <button className={styles.login} type="submit">
