@@ -24,11 +24,7 @@ class AuthService {
 
   logInMail(userMail, userPW) {
     return firebaseAuth //
-      .signInWithEmailAndPassword(userMail, userPW)
-      .then((result) => console.log(result))
-      .catch((error) => {
-        throw Error(error);
-      });
+      .signInWithEmailAndPassword(userMail, userPW);
   }
 
   logInOutlink(providerName) {
@@ -38,6 +34,10 @@ class AuthService {
 
   resetPW(emailAddress) {
     return firebaseAuth.sendPasswordResetEmail(emailAddress);
+  }
+
+  signOut() {
+    return firebaseAuth.signOut();
   }
 }
 

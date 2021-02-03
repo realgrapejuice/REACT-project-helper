@@ -22,7 +22,7 @@
   transform: scale(1.05);
 }
 
-.navBox > .signup {
+.navBox > .sign {
   letter-spacing: -0.01em;
   color: #fff;
   background-color: #f47d31;
@@ -32,6 +32,6 @@
   transition: opacity 150ms ease-in;
 }
 
-.navBox > .signup:hover {
+.navBox > .sign:hover {
   opacity: 0.8;
 }

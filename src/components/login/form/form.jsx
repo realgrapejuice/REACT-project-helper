@@ -1,20 +1,39 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import Auth from "../aut/auth";
 import styles from "./form.module.css";
 
 const Form = ({ authService }) => {
+  //Router Variable
+  const history = useHistory();
+
+  //Form Input Variable
   const mailRef = useRef();
   const passwordRef = useRef();
 
+  // Make route change
+  const goToConsole = (userId) => {
+    history.push({
+      pathname: `/console/${userId}`,
+      state: { id: userId },
+    });
+  };
+
+  // Make LogIn Event
   const handleLogIn = (event) => {
     event.preventDefault();
     const userMail = mailRef.current.value;
     const userPW = passwordRef.current.value;
     authService //
       .logInMail(userMail, userPW)
-      .then((result) => console.log(result));
+      .then((result) => goToConsole(result.user.uid));
     mailRef.current.value = "";
     passwordRef.current.value = "";
+  };
+
+  const handleSignStatus = () => {
+    onSignStatus();
+    console.log(signStatus);
   };
 
   return (
@@ -47,7 +66,7 @@ const Form = ({ authService }) => {
         <button className={styles.login} type="submit">
           Log In
         </button>
-        <Auth authService={authService} />
+        <Auth authService={authService} goToConsole={goToConsole} />
       </form>
     </section>
   );

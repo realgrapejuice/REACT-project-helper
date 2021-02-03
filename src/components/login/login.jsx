@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Auth from "./aut/auth";
 import Form from "./form/form";
 import styles from "./login.module.css";
 
 const LogIn = ({ authService }) => {
+  const history = useHistory();
+
   const createSquare = () => {
     const container = document.querySelector("#container");
     const square = document.createElement("span");
@@ -19,7 +22,11 @@ const LogIn = ({ authService }) => {
 
     square.style.backgroundColor = bg;
 
-    container.appendChild(square);
+    if (history.location.pathname === "/login") {
+      container.appendChild(square);
+    } else {
+      return;
+    }
 
     setTimeout(() => {
       square.remove();
@@ -28,7 +35,7 @@ const LogIn = ({ authService }) => {
 
   useEffect(() => {
     setInterval(createSquare, 100);
-  });
+  }, [createSquare]);
 
   return (
     <main id="container" className={styles.container}>
