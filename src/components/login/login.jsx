@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Auth from "./aut/auth";
 import Form from "./form/form";
 import styles from "./login.module.css";
 
-const LogIn = ({ authService }) => {
+const LogIn = ({ authService, signStatus, setSignStatus }) => {
   const history = useHistory();
 
   const createSquare = () => {
@@ -22,6 +21,7 @@ const LogIn = ({ authService }) => {
 
     square.style.backgroundColor = bg;
 
+    // 이 이벤트가 계속해서 발생하고 있는 것이 아닌지 염려가 됨
     if (history.location.pathname === "/login") {
       container.appendChild(square);
     } else {
@@ -35,11 +35,11 @@ const LogIn = ({ authService }) => {
 
   useEffect(() => {
     setInterval(createSquare, 100);
-  }, [createSquare]);
+  });
 
   return (
     <main id="container" className={styles.container}>
-      <Form authService={authService} />
+      <Form authService={authService} setSignStatus={setSignStatus} />
     </main>
   );
 };

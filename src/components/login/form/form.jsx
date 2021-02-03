@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import Auth from "../aut/auth";
 import styles from "./form.module.css";
 
-const Form = ({ authService }) => {
+const Form = ({ authService, setSignStatus }) => {
   //Router Variable
   const history = useHistory();
 
@@ -26,14 +26,10 @@ const Form = ({ authService }) => {
     const userPW = passwordRef.current.value;
     authService //
       .logInMail(userMail, userPW)
-      .then((result) => goToConsole(result.user.uid));
+      .then((result) => goToConsole(result.user.uid))
+      .then(setSignStatus(true));
     mailRef.current.value = "";
     passwordRef.current.value = "";
-  };
-
-  const handleSignStatus = () => {
-    onSignStatus();
-    console.log(signStatus);
   };
 
   return (
@@ -66,7 +62,11 @@ const Form = ({ authService }) => {
         <button className={styles.login} type="submit">
           Log In
         </button>
-        <Auth authService={authService} goToConsole={goToConsole} />
+        <Auth
+          authService={authService}
+          goToConsole={goToConsole}
+          setSignStatus={setSignStatus}
+        />
       </form>
     </section>
   );

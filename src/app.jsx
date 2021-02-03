@@ -5,17 +5,25 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import SignUp from "./components/signUp/signUp";
 import FindPW from "./components/login/findPW/findPW";
 import Console from "./components/console/console";
+import { useState } from "react";
 
 function App({ authService }) {
-  //여기서 로그인 status를 분리하는 로직을 구성하고 반영하는 것이 좋을듯
-
+  const [signStatus, setSignStatus] = useState(false);
   return (
     <BrowserRouter>
       <div className={styles.container}>
-        <Header authService={authService} />
+        <Header
+          authService={authService}
+          signStatus={signStatus}
+          setSignStatus={setSignStatus}
+        />
         <Switch>
           <Route exact path={["/", "/login"]}>
-            <LogIn authService={authService} />
+            <LogIn
+              authService={authService}
+              signStatus={signStatus}
+              setSignStatus={setSignStatus}
+            />
           </Route>
           <Route path="/console">
             <Console />

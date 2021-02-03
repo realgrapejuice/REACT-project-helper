@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./auth.module.css";
 
-const Auth = ({ authService, goToConsole }) => {
+const Auth = ({ authService, goToConsole, setSignStatus }) => {
   const handleClick = (event) => {
     const provider = event.target.innerText.split(" ")[2];
     authService //
       .logInOutlink(provider)
-      .then((result) => goToConsole(result.user.uid));
+      .then((result) => goToConsole(result.user.uid))
+      .then(setSignStatus(true));
   };
 
   return (
