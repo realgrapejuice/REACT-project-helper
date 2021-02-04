@@ -36,6 +36,12 @@ class AuthService {
     return firebaseAuth.sendPasswordResetEmail(emailAddress);
   }
 
+  onAuthChange(onUserChanged) {
+    firebaseAuth.onAuthStateChanged((user) => {
+      onUserChanged(user);
+    });
+  }
+
   signOut() {
     return firebaseAuth.signOut();
   }

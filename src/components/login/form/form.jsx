@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import Auth from "../aut/auth";
 import styles from "./form.module.css";
@@ -26,11 +26,19 @@ const Form = ({ authService, setSignStatus }) => {
     const userPW = passwordRef.current.value;
     authService //
       .logInMail(userMail, userPW)
-      .then((result) => goToConsole(result.user.uid))
-      .then(setSignStatus(true));
+      .then((result) => {
+        goToConsole(result.user.uid);
+      });
     mailRef.current.value = "";
     passwordRef.current.value = "";
   };
+
+  useEffect(() => {
+    authService.onAuthChange((user) => {
+      user && goToConsole(user.X.X);
+      user && setSignStatus(true);
+    });
+  });
 
   return (
     <section className={styles.container}>
@@ -62,11 +70,7 @@ const Form = ({ authService, setSignStatus }) => {
         <button className={styles.login} type="submit">
           Log In
         </button>
-        <Auth
-          authService={authService}
-          goToConsole={goToConsole}
-          setSignStatus={setSignStatus}
-        />
+        <Auth authService={authService} goToConsole={goToConsole} />
       </form>
     </section>
   );

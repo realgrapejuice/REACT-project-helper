@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./nav.module.css";
 
@@ -10,6 +10,7 @@ const Nav = ({ authService, signStatus, setSignStatus }) => {
       .signOut()
       .then(setSignStatus(false));
   };
+
   return (
     <nav className={styles.navBox}>
       <a href="/about">About</a>
