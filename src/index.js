@@ -4,6 +4,7 @@ import "./index.css";
 import AuthService from "./services/authService";
 import App from "./app";
 import reportWebVitals from "./reportWebVitals";
+import "@fortawesome/fontawesome-free/js/all.js";
 
 const authService = new AuthService();
 

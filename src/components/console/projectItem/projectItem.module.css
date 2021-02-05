@@ -1,0 +1,27 @@
+.projectBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #5f6175;
+}
+
+.projectBox > h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  letter-spacing: 0.03em;
+}
+
+.projectBox > span {
+  font-size: 0.8rem;
+  letter-spacing: -0.05em;
+}
+
+.projectBox > .icon {
+  display: inline-flex;
+  height: inherit;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 1.2rem;
+}

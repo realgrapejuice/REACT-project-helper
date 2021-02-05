@@ -1,0 +1,19 @@
+.addBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #f47d31;
+}
+
+.addBox > .icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.addBox > span {
+  font-size: 1rem;
+  font-weight: 500;
+}
