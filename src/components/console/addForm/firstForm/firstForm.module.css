@@ -1,0 +1,34 @@
+.firstForm {
+  display: flex;
+  width: 100%;
+  padding-top: 5rem;
+  padding-left: 6rem;
+  position: relative;
+}
+
+.statusBox {
+  position: absolute;
+  top: 7rem;
+  left: 5rem;
+  font-size: 1.3rem;
+  color: #5a6175;
+}
+
+.statusBox > button {
+  font-size: 1.3rem;
+  margin-right: 20px;
+  color: #5a6175;
+  cursor: pointer;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem;
+}
+
+.projectName,
+.projectItem {
+  display: flex;
+  flex-direction: column;
+}

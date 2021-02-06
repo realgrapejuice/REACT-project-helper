@@ -1,15 +1,21 @@
 import React from "react";
 import styles from "./addItem.module.css";
 
-const AddItem = (props) => (
-  <li className={styles.projectItem}>
-    <div className={styles.addBox}>
-      <div className={styles.icon}>
-        <i className="fas fa-plus"></i>
+const AddItem = ({ onAddClick }) => {
+  const handleAddclick = () => {
+    onAddClick();
+  };
+
+  return (
+    <li className={styles.projectItem} onClick={handleAddclick}>
+      <div className={styles.addBox}>
+        <div className={styles.icon}>
+          <i className="fas fa-plus"></i>
+        </div>
+        <span>New Venue</span>
       </div>
-      <span>New Venue</span>
-    </div>
-  </li>
-);
+    </li>
+  );
+};
 
 export default AddItem;

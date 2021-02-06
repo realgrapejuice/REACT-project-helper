@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./console.module.css";
 import Projects from "./projects/projects";
+import Addform from "./addForm/addForm";
 
 const Console = (props) => {
   const exProject = [
@@ -27,10 +28,23 @@ const Console = (props) => {
   ];
 
   const [projectList, setProjectList] = useState(exProject);
+  const [addStatus, setAddStatus] = useState(false);
+
+  const toggleAddClick = () => {
+    addStatus ? setAddStatus(false) : setAddStatus(true);
+  };
 
   return (
     <section className={styles.container}>
-      <Projects projectList={projectList} setProjectList={setProjectList} />
+      {!addStatus ? (
+        <Projects
+          projectList={projectList}
+          setProjectList={setProjectList}
+          onAddClick={toggleAddClick}
+        />
+      ) : (
+        <Addform onXClick={toggleAddClick} />
+      )}
     </section>
   );
 };
