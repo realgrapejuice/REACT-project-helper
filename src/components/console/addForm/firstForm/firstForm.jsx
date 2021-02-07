@@ -11,31 +11,13 @@ const FirstForm = ({ onXClick }) => {
         <span>Make project (1/3 Stage)</span>
       </div>
       <div className={styles.formBox}>
-        <div className={styles.projectName}>
-          <label htmlFor="projectName">Project Name</label>
-          <input
-            type="text"
-            name="projectName"
-            placeholder="Project Name"
-            required
-          />
-          <button type="button">Save</button>
-        </div>
-        <div className={styles.projectItem}>
-          <label htmlFor="projectItem">Project Item</label>
-          <input
-            type="text"
-            name="projectItem"
-            placeholder="Add Progress"
-            required
-          />
-          <button type="button">Add Progress</button>
-        </div>
-      </div>
-      <div className={styles.itemBox}>
+        <input type="text" placeholder="Project Name" />
+        <form>
+          <input type="text" placeholder="Add todo" />
+          <button type="submit">Save</button>
+        </form>
         <ol>
-          <li>Example</li>
-          <li>Example2</li>
+          <li></li>
         </ol>
       </div>
     </section>
