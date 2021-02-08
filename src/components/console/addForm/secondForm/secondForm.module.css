@@ -1,0 +1,32 @@
+.secondForm {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.form {
+  width: 500px;
+  height: 600px;
+  background-color: #fff;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.form h1 {
+  padding: 1rem;
+  background-color: #f47d31;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.form input {
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.form ol {
+  padding: 1rem;
+}

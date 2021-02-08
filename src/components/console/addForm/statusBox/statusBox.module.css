@@ -12,3 +12,7 @@
   color: #5a6175;
   cursor: pointer;
 }
+
+.statusBox > span:first-of-type {
+  margin-right: 10px;
+}

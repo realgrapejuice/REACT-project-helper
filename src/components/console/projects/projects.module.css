@@ -3,6 +3,7 @@
   flex-direction: column;
   margin: 0 auto;
   padding-top: 5rem;
+  overflow-y: auto;
 }
 
 .container > h1 {

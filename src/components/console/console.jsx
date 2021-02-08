@@ -43,7 +43,11 @@ const Console = (props) => {
           onAddClick={toggleAddClick}
         />
       ) : (
-        <Addform onXClick={toggleAddClick} />
+        <Addform
+          onXClick={toggleAddClick}
+          projectList={projectList}
+          setProjectList={setProjectList}
+        />
       )}
     </section>
   );
