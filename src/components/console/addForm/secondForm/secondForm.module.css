@@ -30,3 +30,19 @@
 .form ol {
   padding: 1rem;
 }
+
+.form li {
+  display: flex;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.form .icon {
+  color: #bdc3c7;
+  margin-right: 1rem;
+}
+
+.form span {
+  font-weight: 500;
+  color: #5a6175;
+}

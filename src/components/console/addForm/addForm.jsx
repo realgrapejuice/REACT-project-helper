@@ -35,13 +35,20 @@ const Addform = ({ onXClick, projectList, setProjectList }) => {
     setProjectList(list);
   };
 
+  const appendTodo = (item) => {
+    const todo = [];
+    todo.push(item);
+    console.log(todo);
+  };
+
   let title;
   switch (step) {
     case 1:
-      title = "What is your Project Name?";
+      title = "투두리스트의 이름을 만들어주세요";
       break;
     case 2:
-      title = "Create a todo list as you think";
+      title =
+        "생각나는 대로 할 일을 적고 우선순위대로 나열해보세요. 자세하지 않아도 좋습니다.";
       break;
     default:
       console.log("Error");
@@ -62,7 +69,9 @@ const Addform = ({ onXClick, projectList, setProjectList }) => {
       />
     );
   } else if (step === 2) {
-    return <SecondForm onXClick={onXClick} title={title} />;
+    return (
+      <SecondForm onXClick={onXClick} title={title} appendTodo={appendTodo} />
+    );
   }
 };
 

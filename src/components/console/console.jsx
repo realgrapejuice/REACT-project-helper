@@ -9,21 +9,25 @@ const Console = (props) => {
       id: 0,
       date: "2021-02-05",
       projectName: "makeApp",
+      todo: [],
     },
     {
       id: 1,
       date: "2020-12-31",
       projectName: "20210204",
+      todo: [],
     },
     {
       id: 2,
       date: "2020-08-09",
       projectName: "example",
+      todo: [],
     },
     {
       id: 3,
       date: "2021-02-15",
       projectName: "box-sizing",
+      todo: [],
     },
   ];
 
