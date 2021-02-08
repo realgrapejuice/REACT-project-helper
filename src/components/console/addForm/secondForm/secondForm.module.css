@@ -12,6 +12,7 @@
   background-color: #fff;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
+  overflow-y: auto;
 }
 
 .form h1 {
@@ -23,6 +24,8 @@
 }
 
 .form input {
+  display: block;
+  width: 100%;
   padding: 1rem;
   font-size: 0.9rem;
 }
@@ -33,8 +36,10 @@
 
 .form li {
   display: flex;
+  align-items: center;
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  position: relative;
 }
 
 .form .icon {
@@ -45,4 +50,12 @@
 .form span {
   font-weight: 500;
   color: #5a6175;
+}
+
+.form .delete {
+  font-size: 1rem;
+  position: absolute;
+  right: 0;
+  color: #c0392b;
+  cursor: pointer;
 }

@@ -25,13 +25,16 @@ const SecondForm = ({ onXClick, title }) => {
           <h1>Todo Name</h1>
           <input ref={inputRef} type="text" placeholder="Add Your Tasks" />
         </form>
-        <ol id="ol" className={styles.todo}>
+        <ol className={styles.todo}>
           {todo.map((element) => (
             <li>
               <div className={styles.icon}>
                 <i className="fas fa-grip-vertical"></i>
               </div>
               <span>{element}</span>
+              <button type="button" className={styles.delete}>
+                <i class="far fa-trash-alt"></i>
+              </button>
             </li>
           ))}
         </ol>
