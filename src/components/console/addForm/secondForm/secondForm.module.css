@@ -45,6 +45,7 @@
 .form .icon {
   color: #bdc3c7;
   margin-right: 1rem;
+  cursor: pointer;
 }
 
 .form span {
@@ -58,4 +59,9 @@
   right: 0;
   color: #c0392b;
   cursor: pointer;
+}
+
+.form .icon:hover,
+.form .delete:hover {
+  transform: scale(1.1);
 }

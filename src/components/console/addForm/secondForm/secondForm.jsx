@@ -4,9 +4,8 @@ import StatusBox from "../statusBox/statusBox";
 import styles from "./secondForm.module.css";
 
 //drag and drop으로 todo 만들고, 우선순위대로 organize 할 수 있도록 구성할 것
-const SecondForm = ({ onXClick, title }) => {
+const SecondForm = ({ onXClick, title, todo, setTodo, onDelete }) => {
   const inputRef = useRef();
-  const [todo, setTodo] = useState([]);
 
   const handleAddTodo = (event) => {
     event.preventDefault();
@@ -15,6 +14,10 @@ const SecondForm = ({ onXClick, title }) => {
     copiedTodo.push(input);
     setTodo(copiedTodo);
     inputRef.current.value = "";
+  };
+
+  const handleDelete = (item) => {
+    onDelete(item);
   };
 
   return (
@@ -27,12 +30,16 @@ const SecondForm = ({ onXClick, title }) => {
         </form>
         <ol className={styles.todo}>
           {todo.map((element) => (
-            <li>
+            <li draggable="true">
               <div className={styles.icon}>
                 <i className="fas fa-grip-vertical"></i>
               </div>
               <span>{element}</span>
-              <button type="button" className={styles.delete}>
+              <button
+                type="button"
+                className={styles.delete}
+                onClick={handleDelete}
+              >
                 <i class="far fa-trash-alt"></i>
               </button>
             </li>

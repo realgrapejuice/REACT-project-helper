@@ -3,7 +3,6 @@ import FirstForm from "./firstForm/firstForm";
 import SecondForm from "./secondForm/secondForm";
 
 const Addform = ({ onXClick, projectList, setProjectList }) => {
-  const [step, setStep] = useState(1);
   const [saveStatus, setSaveStatus] = useState(false);
 
   const toggleStatus = () => {
@@ -35,11 +34,16 @@ const Addform = ({ onXClick, projectList, setProjectList }) => {
     setProjectList(list);
   };
 
-  const appendTodo = (item) => {
-    const todo = [];
-    todo.push(item);
-    console.log(todo);
+  const [todo, setTodo] = useState([]);
+
+  const handleDelete = (item) => {
+    const copiedTodo = [...todo];
+    const index = todo.indexOf(item);
+    copiedTodo.splice(index, 1);
+    setTodo(copiedTodo);
   };
+
+  const [step, setStep] = useState(1);
 
   let title;
   switch (step) {
@@ -55,8 +59,9 @@ const Addform = ({ onXClick, projectList, setProjectList }) => {
       break;
   }
 
-  console.log(title);
+  const [grab, setGrab] = useState(null);
 
+  //render
   if (step === 1) {
     return (
       <FirstForm
@@ -70,7 +75,13 @@ const Addform = ({ onXClick, projectList, setProjectList }) => {
     );
   } else if (step === 2) {
     return (
-      <SecondForm onXClick={onXClick} title={title} appendTodo={appendTodo} />
+      <SecondForm
+        onXClick={onXClick}
+        title={title}
+        todo={todo}
+        setTodo={setTodo}
+        onDelete={handleDelete}
+      />
     );
   }
 };
