@@ -1,23 +1,45 @@
 .firstForm {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
 }
 
-.statusBox {
-  position: absolute;
-  top: 7rem;
-  left: 5rem;
-  font-size: 1.3rem;
-  color: #5a6175;
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 500px;
+  height: 200px;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
 }
 
-.statusBox > button {
-  font-size: 1.3rem;
-  margin-right: 20px;
-  color: #5a6175;
+.title > label {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.title input {
+  display: block;
+  width: 100%;
+  padding: 1rem 1rem 1rem 0;
+  font-size: 0.9rem;
+}
+
+.title button {
+  align-self: flex-end;
+  width: 60px;
+  padding: 0.5rem;
+  color: #fff;
+  font-weight: 500;
+  background-color: #f47d31;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-.formBox {
-  padding-top: 10rem;
+.title button:hover {
+  opacity: 0.8;
 }
