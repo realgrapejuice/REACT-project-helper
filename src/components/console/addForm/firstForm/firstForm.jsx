@@ -2,30 +2,27 @@ import React, { useRef } from "react";
 import styles from "./firstForm.module.css";
 import NextBtn from "../nextBtn/nextBtn";
 import StatusBox from "../statusBox/statusBox";
-import SecondForm from "../secondForm/secondForm";
 
 const FirstForm = ({
   onXClick,
-  saveStatus,
   onToggle,
-  saveTitle,
+  saveName,
+  setTodoName,
   setStep,
   title,
 }) => {
   const titleRef = useRef();
+  const random = Math.floor(Math.random() * 10000);
 
   // relative with submit button
   const handleSubmit = (event) => {
     event.preventDefault();
-    const title = titleRef.current.value;
-    saveTitle(title);
+    const title = titleRef.current.value || `Project ${random}`;
+    saveName(title);
+    setTodoName(title);
     onToggle();
-    titleRef.current.value = "";
-  };
-
-  //relative with next button
-  const handleSaveTitle = () => {
     setStep(2);
+    titleRef.current.value = "";
   };
 
   return (
@@ -44,7 +41,6 @@ const FirstForm = ({
         />
         <button type="submit">Save</button>
       </form>
-      {saveStatus ? <NextBtn onSave={handleSaveTitle} /> : ""}
     </section>
   );
 };

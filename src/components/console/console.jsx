@@ -32,6 +32,7 @@ const Console = (props) => {
   ];
 
   const [projectList, setProjectList] = useState(exProject);
+  const [virtualList, setVirtualList] = useState([...projectList]);
   const [addStatus, setAddStatus] = useState(false);
 
   const toggleAddClick = () => {
@@ -41,16 +42,12 @@ const Console = (props) => {
   return (
     <section className={styles.container}>
       {!addStatus ? (
-        <Projects
-          projectList={projectList}
-          setProjectList={setProjectList}
-          onAddClick={toggleAddClick}
-        />
+        <Projects projectList={projectList} onAddClick={toggleAddClick} />
       ) : (
         <Addform
           onXClick={toggleAddClick}
-          projectList={projectList}
-          setProjectList={setProjectList}
+          virtualList={virtualList}
+          setVirtualList={setVirtualList}
         />
       )}
     </section>

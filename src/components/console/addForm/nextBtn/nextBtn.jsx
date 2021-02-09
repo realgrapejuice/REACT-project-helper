@@ -1,14 +1,14 @@
 import React from "react";
+
 import styles from "./nextBtn.module.css";
 
-const NextBtn = ({ onSave }) => {
-  const handleSaveClick = () => {
-    onSave();
-  };
+const NextBtn = ({ goNext }) => {
   return (
-    <button className={styles.nextBtn} type="button" onClick={handleSaveClick}>
-      Next Step
-    </button>
+    <>
+      <button className={styles.nextBtn} type="button" onClick={goNext}>
+        Next Step
+      </button>
+    </>
   );
 };
 

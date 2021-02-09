@@ -1,0 +1,15 @@
+.prevBtn {
+  position: absolute;
+  left: 5rem;
+  bottom: 5rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #f47d31;
+  cursor: pointer;
+}
+
+.prevBtn:hover {
+  opacity: 0.8;
+}

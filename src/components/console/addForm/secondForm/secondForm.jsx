@@ -1,10 +1,20 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import NextBtn from "../nextBtn/nextBtn";
+import PrevBtn from "../prevBtn/prevBtn";
 import StatusBox from "../statusBox/statusBox";
 import styles from "./secondForm.module.css";
 
 //drag and drop으로 todo 만들고, 우선순위대로 organize 할 수 있도록 구성할 것
-const SecondForm = ({ onXClick, title, todo, setTodo, onDelete }) => {
+const SecondForm = ({
+  onXClick,
+  title,
+  todo,
+  setTodo,
+  onDelete,
+  todoName,
+  goPrev,
+  goNext,
+}) => {
   const inputRef = useRef();
 
   const handleAddTodo = (event) => {
@@ -25,7 +35,7 @@ const SecondForm = ({ onXClick, title, todo, setTodo, onDelete }) => {
       <StatusBox onXClick={onXClick} title={title} />
       <div className={styles.form}>
         <form onSubmit={handleAddTodo}>
-          <h1>Todo Name</h1>
+          <h1>{todoName}</h1>
           <input ref={inputRef} type="text" placeholder="Add Your Tasks" />
         </form>
         <ol className={styles.todo}>
@@ -40,13 +50,14 @@ const SecondForm = ({ onXClick, title, todo, setTodo, onDelete }) => {
                 className={styles.delete}
                 onClick={handleDelete}
               >
-                <i class="far fa-trash-alt"></i>
+                <i className="far fa-trash-alt"></i>
               </button>
             </li>
           ))}
         </ol>
       </div>
-      <NextBtn />
+      <PrevBtn goPrev={goPrev} />
+      <NextBtn goNext={goNext} />
     </section>
   );
 };
