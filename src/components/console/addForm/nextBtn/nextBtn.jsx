@@ -1,5 +1,4 @@
 import React from "react";
-
 import styles from "./nextBtn.module.css";
 
 const NextBtn = ({ goNext }) => {

@@ -10,7 +10,7 @@ const Projects = ({ projectList, onAddClick }) => {
       <ul className={styles.list}>
         <AddItem onAddClick={onAddClick} />
         {projectList.map((element) => {
-          return <ProjectItem item={element} />;
+          return <ProjectItem key={element.id} item={element} />;
         })}
       </ul>
     </div>

@@ -39,8 +39,9 @@
   display: flex;
   align-items: center;
   font-size: 1.2rem;
-  margin-bottom: 1rem;
   position: relative;
+  padding: 0 10px;
+  margin-bottom: 1rem;
 }
 
 .form .icon {
@@ -57,7 +58,7 @@
 .form .delete {
   font-size: 1rem;
   position: absolute;
-  right: 0;
+  right: 10px;
   color: #c0392b;
   cursor: pointer;
 }
