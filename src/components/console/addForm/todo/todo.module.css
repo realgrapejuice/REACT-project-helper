@@ -1,0 +1,35 @@
+.dragBox ol {
+  padding: 1rem;
+}
+
+.dragBox li {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  position: relative;
+  padding: 10px;
+}
+
+.dragBox .icon {
+  color: #bdc3c7;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.dragBox span {
+  font-weight: 500;
+  color: #5a6175;
+}
+
+.dragBox .delete {
+  font-size: 1rem;
+  position: absolute;
+  right: 10px;
+  color: #c0392b;
+  cursor: pointer;
+}
+
+.dragBox .icon:hover,
+.dragBox .delete:hover {
+  transform: scale(1.1);
+}

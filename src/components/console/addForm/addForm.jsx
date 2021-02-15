@@ -51,7 +51,9 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
 
   const handleDelete = (item) => {
     const copiedTodo = [...todo];
+    console.log(item);
     const index = findIndex(item);
+    console.log(index);
     copiedTodo.splice(index, 1);
     setTodo(copiedTodo);
   };
