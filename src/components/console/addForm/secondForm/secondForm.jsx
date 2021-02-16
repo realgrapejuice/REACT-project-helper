@@ -28,6 +28,8 @@ const SecondForm = ({
     inputRef.current.value = "";
   };
 
+  console.log(todo);
+
   return (
     <section className={styles.secondForm}>
       <StatusBox onXClick={onXClick} title={title} />

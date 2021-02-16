@@ -49,11 +49,18 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
     return index;
   };
 
-  const handleDelete = (item) => {
+  const handleDelete = (event) => {
+    const node = event.target.parentNode;
     const copiedTodo = [...todo];
-    console.log(item);
-    const index = findIndex(item);
-    console.log(index);
+    let item;
+    let index;
+    if (node.className === "dragItem") {
+      item = node.innerText;
+      index = findIndex(item);
+    } else if (node.parentNode.className === "dragItem") {
+      item = node.parentNode.innerText;
+      index = findIndex(item);
+    }
     copiedTodo.splice(index, 1);
     setTodo(copiedTodo);
   };
