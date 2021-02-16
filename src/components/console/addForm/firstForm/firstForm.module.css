@@ -20,6 +20,7 @@
 
 .title > span {
   font-size: 0.8rem;
+  font-weight: 500;
   position: absolute;
   right: 1.5rem;
 }

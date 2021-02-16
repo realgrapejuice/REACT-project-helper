@@ -1,5 +1,13 @@
-.dragBox ol {
-  padding: 1rem;
+.dragBox {
+  height: 430px;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.dragBox::-webkit-scrollbar {
+  display: none;
 }
 
 .dragBox li {

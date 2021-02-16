@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 import NextBtn from "../nextBtn/nextBtn";
 import PrevBtn from "../prevBtn/prevBtn";
@@ -23,12 +23,11 @@ const SecondForm = ({
     event.preventDefault();
     const copiedTodo = [...todo];
     const input = inputRef.current.value;
+    console.log(input);
     copiedTodo.push(input);
     setTodo(copiedTodo);
     inputRef.current.value = "";
   };
-
-  console.log(todo);
 
   return (
     <section className={styles.secondForm}>
@@ -36,6 +35,7 @@ const SecondForm = ({
       <div className={styles.form}>
         <form onSubmit={handleAddTodo}>
           <h1>{todoName}</h1>
+          <span className={styles.step}>Step 2</span>
           <input
             ref={inputRef}
             type="text"

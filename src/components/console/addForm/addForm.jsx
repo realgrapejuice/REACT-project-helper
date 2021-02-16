@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FirstForm from "./firstForm/firstForm";
 import SecondForm from "./secondForm/secondForm";
+import ThirdForm from "./thirdForm/thirdForm";
 
 const Addform = ({ onXClick, virtualList, setVirtualList }) => {
   // Save Status
@@ -78,6 +79,7 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
       const copiedList = [...virtualList];
       copiedList.splice(0, 1);
       setVirtualList(copiedList);
+      setTodo([]);
     }
   };
 
@@ -90,11 +92,15 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
   let title;
   switch (step) {
     case 1:
-      title = "투두리스트의 이름을 만들어주세요";
+      title = "프로젝트의 이름을 만들어주세요";
       break;
     case 2:
       title =
         "생각나는 대로 할 일을 적고 우선순위대로 나열해보세요. 자세하지 않아도 좋습니다.";
+      break;
+    case 3:
+      title =
+        "만들어진 할 일 목록을 잘게 쪼개 자세한 리스트를 만들어주세요. 이 리스트는 당신의 프로젝트의 할 일 목록이 됩니다.";
       break;
     default:
       console.log("Error");
@@ -121,6 +127,19 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
         title={title}
         todo={todo}
         todoName={todoName}
+        setTodo={setTodo}
+        onDelete={handleDelete}
+        goPrev={goPrev}
+        goNext={goNext}
+        step={step}
+      />
+    );
+  } else {
+    return (
+      <ThirdForm
+        onXClick={onXClick}
+        title={title}
+        todo={todo}
         setTodo={setTodo}
         onDelete={handleDelete}
         goPrev={goPrev}

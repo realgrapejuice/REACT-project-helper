@@ -13,15 +13,25 @@
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   overflow-y: auto;
+  position: relative;
 }
 
 .form h1 {
   padding: 1rem;
-  color: #413d45;
+  color: #323233;
   background-color: #f47d31;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   margin-bottom: 10px;
+}
+
+.form .step {
+  font-size: 0.8rem;
+  font-weight: 500;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #fff;
 }
 
 .form input {
