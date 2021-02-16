@@ -44,6 +44,7 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
 
   //Relative with todo
   const [todo, setTodo] = useState([]);
+  const [ofTodo, setOfTodo] = useState([]);
 
   const findIndex = (item) => {
     const index = todo.indexOf(item);
@@ -107,6 +108,45 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
       break;
   }
 
+  const reorder = (todo, startIndex, endIndex) => {
+    const copiedTodo = [...todo];
+    const removed = copiedTodo.splice(startIndex, 1)[0];
+    copiedTodo.splice(endIndex, 0, removed);
+
+    return copiedTodo;
+  };
+
+  const move = (source, destination, droppableSource, droppableDestination) => {
+    const sourceClone = [...source];
+    const destClone = [...destination];
+    const removed = sourceClone.splice(droppableSource.index, 1)[0];
+
+    destClone.splice(droppableDestination.index, 0, removed);
+
+    const result = {};
+    result[droppableSource.droppableId] = sourceClone;
+    result[droppableDestination.droppableId] = destClone;
+
+    return result;
+  };
+
+  const onDragEnd = (result) => {
+    const { source, destination } = result;
+    if (!destination) {
+      return;
+    }
+    if (source.droppableId === destination.droppableId) {
+      const items = reorder(todo, source.index, destination.index);
+      setTodo(items);
+      console.log(move(todo, ofTodo, source, destination));
+      console.log(destination);
+    } else {
+      const movedItem = move(todo, ofTodo, source, destination);
+      ofTodo.push(movedItem);
+      setOfTodo(ofTodo);
+    }
+  };
+
   //render
   if (step === 1) {
     return (
@@ -132,6 +172,7 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
         goPrev={goPrev}
         goNext={goNext}
         step={step}
+        onDragEnd={onDragEnd}
       />
     );
   } else {
@@ -141,10 +182,13 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
         title={title}
         todo={todo}
         setTodo={setTodo}
+        ofTodo={ofTodo}
+        setOfTodo={setOfTodo}
         onDelete={handleDelete}
         goPrev={goPrev}
         goNext={goNext}
         step={step}
+        onDragEnd={onDragEnd}
       />
     );
   }

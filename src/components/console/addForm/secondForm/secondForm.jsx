@@ -16,6 +16,7 @@ const SecondForm = ({
   todoName,
   goPrev,
   goNext,
+  onDragEnd,
 }) => {
   const inputRef = useRef();
 
@@ -23,7 +24,6 @@ const SecondForm = ({
     event.preventDefault();
     const copiedTodo = [...todo];
     const input = inputRef.current.value;
-    console.log(input);
     copiedTodo.push(input);
     setTodo(copiedTodo);
     inputRef.current.value = "";
@@ -43,7 +43,12 @@ const SecondForm = ({
             required
           />
         </form>
-        <Todo todo={todo} setTodo={setTodo} onDelete={onDelete} />
+        <Todo
+          todo={todo}
+          setTodo={setTodo}
+          onDelete={onDelete}
+          onDragEnd={onDragEnd}
+        />
       </div>
       <PrevBtn goPrev={goPrev} />
       <NextBtn goNext={goNext} />

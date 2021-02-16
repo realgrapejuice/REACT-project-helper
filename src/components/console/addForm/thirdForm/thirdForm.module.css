@@ -30,3 +30,10 @@
 .newTodo > h1 {
   padding: 0.5rem;
 }
+
+.newTodo input {
+  width: 100%;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 12px 12px 0 0;
+}

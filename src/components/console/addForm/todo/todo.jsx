@@ -2,26 +2,9 @@ import React from "react";
 import styles from "./todo.module.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-const Todo = ({ todo, setTodo, onDelete }) => {
+const Todo = ({ todo, setTodo, onDelete, onDragEnd }) => {
   const handleDelete = (item) => {
     onDelete(item);
-  };
-
-  const reorder = (todo, startIndex, endIndex) => {
-    const copiedTodo = [...todo];
-    const removed = copiedTodo.splice(startIndex, 1)[0];
-    copiedTodo.splice(endIndex, 0, removed);
-
-    return copiedTodo;
-  };
-
-  const onDragEnd = (result) => {
-    if (!result.destination) {
-      return;
-    }
-    const items = reorder(todo, result.source.index, result.destination.index);
-
-    setTodo(items);
   };
 
   return (
