@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import NextBtn from "../nextBtn/nextBtn";
 import OfficialTodo from "../officialTodo/officilaTodo";
 import PrevBtn from "../prevBtn/prevBtn";
+import SaveBtn from "../saveBtn/saveBtn";
 import StatusBox from "../statusBox/statusBox";
 import Todo from "../todo/todo";
 import styles from "./thirdForm.module.css";
@@ -12,12 +12,13 @@ const ThirdForm = ({
   todo,
   setTodo,
   onDelete,
+  onOfDelete,
   goPrev,
-  goNext,
-  step,
   onDragEnd,
   ofTodo,
   setOfTodo,
+  virtualList,
+  setVirtualList,
 }) => {
   const inputRef = useRef();
 
@@ -35,12 +36,7 @@ const ThirdForm = ({
       <StatusBox onXClick={onXClick} title={title} />
       <div className={styles.oldTodo}>
         <h1>Old List</h1>
-        <Todo
-          todo={todo}
-          setTodo={setTodo}
-          onDelete={onDelete}
-          onDragEnd={onDragEnd}
-        />
+        <Todo todo={todo} setTodo={setTodo} onDelete={onDelete} />
       </div>
       <div className={styles.newTodo}>
         <h1>New List</h1>
@@ -55,12 +51,17 @@ const ThirdForm = ({
         <OfficialTodo
           ofTodo={ofTodo}
           setOfTodo={setOfTodo}
-          onDelete={onDelete}
+          onOfDelete={onOfDelete}
           onDragEnd={onDragEnd}
         />
       </div>
       <PrevBtn goPrev={goPrev} />
-      <NextBtn goNext={goNext} step={step} />
+      <SaveBtn
+        onXClick={onXClick}
+        virtualList={virtualList}
+        setVirtualList={setVirtualList}
+        ofTodo={ofTodo}
+      />
     </section>
   );
 };

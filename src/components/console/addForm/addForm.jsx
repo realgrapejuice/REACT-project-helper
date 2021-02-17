@@ -67,6 +67,27 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
     setTodo(copiedTodo);
   };
 
+  const findOfTodoIndex = (item) => {
+    const index = ofTodo.indexOf(item);
+    return index;
+  };
+
+  const handleOfTodoDelete = (event) => {
+    const node = event.target.parentNode;
+    const copiedTodo = [...ofTodo];
+    let item;
+    let index;
+    if (node.className === "dragItem") {
+      item = node.innerText;
+      index = findOfTodoIndex(item);
+    } else if (node.parentNode.className === "dragItem") {
+      item = node.parentNode.innerText;
+      index = findOfTodoIndex(item);
+    }
+    copiedTodo.splice(index, 1);
+    setOfTodo(copiedTodo);
+  };
+
   // Relative with todo-name
   const [todoName, setTodoName] = useState(null);
 
@@ -116,18 +137,19 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
     return copiedTodo;
   };
 
+  // 원본, 옮기고자 하는 대상, 출처의 위치, 목적지의 위치
   const move = (source, destination, droppableSource, droppableDestination) => {
-    const sourceClone = [...source];
-    const destClone = [...destination];
+    const sourceClone = source;
+    const destClone = destination;
     const removed = sourceClone.splice(droppableSource.index, 1)[0];
-
     destClone.splice(droppableDestination.index, 0, removed);
 
-    const result = {};
-    result[droppableSource.droppableId] = sourceClone;
-    result[droppableDestination.droppableId] = destClone;
-
-    return result;
+    // 여기까지의 로직만 하더라도 옮긴 대상을 가져와서 지우고, 새로운 배열에 붙이는게 구현
+    const resultValue = {
+      sourceClone,
+      destClone,
+    };
+    return resultValue;
   };
 
   const onDragEnd = (result) => {
@@ -136,14 +158,14 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
       return;
     }
     if (source.droppableId === destination.droppableId) {
-      const items = reorder(todo, source.index, destination.index);
-      setTodo(items);
-      console.log(move(todo, ofTodo, source, destination));
-      console.log(destination);
-    } else {
-      const movedItem = move(todo, ofTodo, source, destination);
-      ofTodo.push(movedItem);
-      setOfTodo(ofTodo);
+      if (source.droppableId === "droppable") {
+        const items = reorder(todo, source.index, destination.index);
+        setTodo(items);
+      }
+      if (source.droppableId === "droppable2") {
+        const items = reorder(ofTodo, source.index, destination.index);
+        setOfTodo(items);
+      }
     }
   };
 
@@ -185,10 +207,13 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
         ofTodo={ofTodo}
         setOfTodo={setOfTodo}
         onDelete={handleDelete}
+        onOfDelete={handleOfTodoDelete}
         goPrev={goPrev}
         goNext={goNext}
         step={step}
         onDragEnd={onDragEnd}
+        virtualList={virtualList}
+        setVirtualList={setVirtualList}
       />
     );
   }

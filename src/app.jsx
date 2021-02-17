@@ -1,7 +1,7 @@
 import styles from "./app.module.css";
 import Header from "./components/header/header";
 import LogIn from "./components/login/login";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignUp from "./components/signUp/signUp";
 import FindPW from "./components/login/findPW/findPW";
 import Console from "./components/console/console";

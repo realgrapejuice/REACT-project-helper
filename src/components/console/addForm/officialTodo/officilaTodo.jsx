@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./officialTodo.module.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-const OfficialTodo = ({ ofTodo, setOfTodo, onDelete, onDragEnd }) => {
+const OfficialTodo = ({ ofTodo, setOfTodo, onOfDelete, onDragEnd }) => {
   const handleDelete = (item) => {
-    onDelete(item);
+    onOfDelete(item);
   };
 
   return (
