@@ -1,11 +1,20 @@
 import React from "react";
 import styles from "./saveBtn.module.css";
 
-const SaveBtn = ({ onXClick, virtualList, setVirtualList, ofTodo }) => {
+const SaveBtn = ({
+  onXClick,
+  virtualList,
+  projectList,
+  setProjectList,
+  ofTodo,
+}) => {
   const handleSave = () => {
-    const target = virtualList[0];
-    target.todo = ofTodo;
-    //여기서 virtualList를 모은다음 원본리스트에 state 업데이트하고 virtualList를 초기화해야 함
+    const newTodo = virtualList[0];
+    newTodo.todo = ofTodo;
+    const listClone = [...projectList];
+    listClone.unshift(newTodo);
+    setProjectList(listClone);
+    onXClick();
   };
   return (
     <button className={styles.saveBtn} type="button" onClick={handleSave}>

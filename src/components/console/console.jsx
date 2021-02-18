@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./console.module.css";
 import Projects from "./projects/projects";
 import Addform from "./addForm/addForm";
@@ -39,6 +39,10 @@ const Console = (props) => {
     addStatus ? setAddStatus(false) : setAddStatus(true);
   };
 
+  useEffect(() => {
+    setVirtualList([...projectList]);
+  }, [projectList]);
+
   return (
     <section className={styles.container}>
       {!addStatus ? (
@@ -48,6 +52,8 @@ const Console = (props) => {
           onXClick={toggleAddClick}
           virtualList={virtualList}
           setVirtualList={setVirtualList}
+          projectList={projectList}
+          setProjectList={setProjectList}
         />
       )}
     </section>

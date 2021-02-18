@@ -3,7 +3,13 @@ import FirstForm from "./firstForm/firstForm";
 import SecondForm from "./secondForm/secondForm";
 import ThirdForm from "./thirdForm/thirdForm";
 
-const Addform = ({ onXClick, virtualList, setVirtualList }) => {
+const Addform = ({
+  onXClick,
+  virtualList,
+  setVirtualList,
+  projectList,
+  setProjectList,
+}) => {
   // Save Status
   const [saveStatus, setSaveStatus] = useState(false);
 
@@ -214,6 +220,8 @@ const Addform = ({ onXClick, virtualList, setVirtualList }) => {
         onDragEnd={onDragEnd}
         virtualList={virtualList}
         setVirtualList={setVirtualList}
+        projectList={projectList}
+        setProjectList={setProjectList}
       />
     );
   }

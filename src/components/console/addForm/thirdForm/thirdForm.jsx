@@ -19,6 +19,8 @@ const ThirdForm = ({
   setOfTodo,
   virtualList,
   setVirtualList,
+  projectList,
+  setProjectList,
 }) => {
   const inputRef = useRef();
 
@@ -60,6 +62,8 @@ const ThirdForm = ({
         onXClick={onXClick}
         virtualList={virtualList}
         setVirtualList={setVirtualList}
+        projectList={projectList}
+        setProjectList={setProjectList}
         ofTodo={ofTodo}
       />
     </section>
