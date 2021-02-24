@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   color: #5f6175;
+  position: relative;
 }
 
 .projectBox > h1 {
@@ -13,9 +14,21 @@
   letter-spacing: 0.03em;
 }
 
-.projectBox > span {
+.date {
   font-size: 0.8rem;
   letter-spacing: -0.05em;
+}
+
+.modal {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #eb2f06;
+  transition: transform 150ms ease-in;
+}
+
+.modal:hover {
+  transform: scale(1.2);
 }
 
 .projectBox > .icon {
