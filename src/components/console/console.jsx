@@ -3,7 +3,7 @@ import styles from "./console.module.css";
 import Projects from "./projects/projects";
 import Addform from "./addForm/addForm";
 
-const Console = (props) => {
+const Console = () => {
   const exProject = [
     {
       id: 0,
@@ -34,6 +34,8 @@ const Console = (props) => {
   const [projectList, setProjectList] = useState(exProject);
   const [virtualList, setVirtualList] = useState([...projectList]);
   const [addStatus, setAddStatus] = useState(false);
+
+  console.log(projectList);
 
   const toggleAddClick = () => {
     addStatus ? setAddStatus(false) : setAddStatus(true);

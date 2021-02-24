@@ -6,11 +6,11 @@ const SaveBtn = ({
   virtualList,
   projectList,
   setProjectList,
-  ofTodo,
+  todo,
 }) => {
   const handleSave = () => {
     const newTodo = virtualList[0];
-    newTodo.todo = ofTodo;
+    newTodo.todo = todo;
     const listClone = [...projectList];
     listClone.unshift(newTodo);
     setProjectList(listClone);

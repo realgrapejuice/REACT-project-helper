@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import styles from "./firstForm.module.css";
-import NextBtn from "../nextBtn/nextBtn";
 import StatusBox from "../statusBox/statusBox";
 
 const FirstForm = ({
@@ -12,12 +11,12 @@ const FirstForm = ({
   title,
 }) => {
   const titleRef = useRef();
-  const random = Math.floor(Math.random() * 10000);
+  const date = Date.now();
 
   // relative with submit button
   const handleSubmit = (event) => {
     event.preventDefault();
-    const title = titleRef.current.value || `Project ${random}`;
+    const title = titleRef.current.value || `Project ${date}`;
     saveName(title);
     setTodoName(title);
     onToggle();
@@ -30,7 +29,7 @@ const FirstForm = ({
       <StatusBox onXClick={onXClick} title={title} />
       <form className={styles.title} onSubmit={handleSubmit}>
         <span>Step 1</span>
-        <label htmlFor="name">Project Name</label>
+        <label htmlFor="name">Todo-list Name</label>
         <input
           ref={titleRef}
           id="name"

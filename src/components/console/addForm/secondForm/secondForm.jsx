@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import NextBtn from "../nextBtn/nextBtn";
+import SaveBtn from "../saveBtn/saveBtn";
 import PrevBtn from "../prevBtn/prevBtn";
 import StatusBox from "../statusBox/statusBox";
 import Todo from "../todo/todo";
@@ -11,12 +11,14 @@ const SecondForm = ({
   onXClick,
   title,
   todo,
+  todoName,
   setTodo,
   onDelete,
-  todoName,
   goPrev,
-  goNext,
   onDragEnd,
+  virtualList,
+  projectList,
+  setProjectList,
 }) => {
   const inputRef = useRef();
 
@@ -51,7 +53,13 @@ const SecondForm = ({
         />
       </div>
       <PrevBtn goPrev={goPrev} />
-      <NextBtn goNext={goNext} />
+      <SaveBtn
+        onXClick={onXClick}
+        virtualList={virtualList}
+        projectList={projectList}
+        setProjectList={setProjectList}
+        todo={todo}
+      />
     </section>
   );
 };
