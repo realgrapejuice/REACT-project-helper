@@ -4,11 +4,14 @@ import SecondForm from "./secondForm/secondForm";
 
 const Addform = ({
   onXClick,
-  virtualList,
-  setVirtualList,
   projectList,
   setProjectList,
+  database,
+  userId,
 }) => {
+  // Virtual list for stable list management
+  const [virtualList, setVirtualList] = useState(projectList);
+
   // Save Status
   const [saveStatus, setSaveStatus] = useState(false);
 
@@ -42,7 +45,9 @@ const Addform = ({
   const saveName = (name) => {
     const newItem = makeItem();
     newItem.projectName = name;
-    const list = [...virtualList];
+    const list = Object.keys(virtualList).map((key) => {
+      return virtualList[key];
+    });
     list.unshift(newItem);
     setVirtualList(list);
   };
@@ -154,6 +159,8 @@ const Addform = ({
           virtualList={virtualList}
           projectList={projectList}
           setProjectList={setProjectList}
+          database={database}
+          userId={userId}
         />
       );
     default:

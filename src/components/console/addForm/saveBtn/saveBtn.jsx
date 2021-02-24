@@ -7,13 +7,18 @@ const SaveBtn = ({
   projectList,
   setProjectList,
   todo,
+  database,
+  userId,
 }) => {
   const handleSave = () => {
     const newTodo = virtualList[0];
     newTodo.todo = todo;
-    const listClone = [...projectList];
+    const listClone = Object.keys(projectList).map((key) => {
+      return projectList[key];
+    });
     listClone.unshift(newTodo);
     setProjectList(listClone);
+    database.write(userId, newTodo);
     onXClick();
   };
   return (

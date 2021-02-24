@@ -19,6 +19,8 @@ const SecondForm = ({
   virtualList,
   projectList,
   setProjectList,
+  database,
+  userId,
 }) => {
   const inputRef = useRef();
 
@@ -59,6 +61,8 @@ const SecondForm = ({
         projectList={projectList}
         setProjectList={setProjectList}
         todo={todo}
+        database={database}
+        userId={userId}
       />
     </section>
   );

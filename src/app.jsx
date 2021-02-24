@@ -7,7 +7,7 @@ import FindPW from "./components/login/findPW/findPW";
 import Console from "./components/console/console";
 import { useState } from "react";
 
-function App({ authService }) {
+function App({ authService, database }) {
   const [signStatus, setSignStatus] = useState(false);
 
   return (
@@ -27,7 +27,7 @@ function App({ authService }) {
             />
           </Route>
           <Route path="/console">
-            <Console />
+            <Console database={database} />
           </Route>
           <Route path="/forgot-password">
             <FindPW authService={authService} />

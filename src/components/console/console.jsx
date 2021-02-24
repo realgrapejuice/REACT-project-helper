@@ -2,48 +2,27 @@ import React, { useEffect, useState } from "react";
 import styles from "./console.module.css";
 import Projects from "./projects/projects";
 import Addform from "./addForm/addForm";
+import { useHistory } from "react-router-dom";
 
-const Console = () => {
-  const exProject = [
-    {
-      id: 0,
-      date: "2021-02-05",
-      projectName: "makeApp",
-      todo: [],
-    },
-    {
-      id: 1,
-      date: "2020-12-31",
-      projectName: "20210204",
-      todo: [],
-    },
-    {
-      id: 2,
-      date: "2020-08-09",
-      projectName: "example",
-      todo: [],
-    },
-    {
-      id: 3,
-      date: "2021-02-15",
-      projectName: "box-sizing",
-      todo: [],
-    },
-  ];
+const Console = ({ database }) => {
+  const history = useHistory();
+  const [USERID, setUSERID] = useState(history && history.location.state.id);
 
-  const [projectList, setProjectList] = useState(exProject);
-  const [virtualList, setVirtualList] = useState([...projectList]);
+  const [projectList, setProjectList] = useState({});
+
   const [addStatus, setAddStatus] = useState(false);
-
-  console.log(projectList);
 
   const toggleAddClick = () => {
     addStatus ? setAddStatus(false) : setAddStatus(true);
   };
 
   useEffect(() => {
-    setVirtualList([...projectList]);
-  }, [projectList]);
+    if (!USERID) return;
+    const stopSync = database.read(USERID, (projects) => {
+      setProjectList(projects);
+    });
+    return () => stopSync();
+  }, [USERID, database]);
 
   return (
     <section className={styles.container}>
@@ -52,10 +31,10 @@ const Console = () => {
       ) : (
         <Addform
           onXClick={toggleAddClick}
-          virtualList={virtualList}
-          setVirtualList={setVirtualList}
           projectList={projectList}
           setProjectList={setProjectList}
+          database={database}
+          userId={USERID}
         />
       )}
     </section>

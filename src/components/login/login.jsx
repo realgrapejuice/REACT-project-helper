@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Form from "./form/form";
 import styles from "./login.module.css";
 
-const LogIn = ({ authService, signStatus, setSignStatus }) => {
+const LogIn = ({ authService, setSignStatus }) => {
   const history = useHistory();
 
   const createSquare = () => {
