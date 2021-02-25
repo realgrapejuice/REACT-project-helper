@@ -38,6 +38,15 @@ a {
   text-decoration: none;
 }
 
+/* projectItem section */
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 #square {
   position: absolute;
   pointer-events: none;

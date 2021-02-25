@@ -5,6 +5,7 @@
   flex-direction: column;
   color: #5f6175;
   position: relative;
+  z-index: 100;
 }
 
 .projectBox > h1 {
@@ -37,4 +38,48 @@
   flex-direction: column;
   justify-content: flex-end;
   font-size: 1.2rem;
+}
+
+.checkDelete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -10px;
+  top: 0px;
+  width: 280px;
+  height: 190px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.deleteTitle {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.deleteDesc {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  font-size: 1rem;
+  transition: transform 150ms ease-in;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.2);
+}
+
+.yes {
+  color: #2ebc4f;
+  margin-right: 2rem;
+}
+
+.no {
+  color: #eb2f06;
 }

@@ -3,7 +3,13 @@ import AddItem from "../addItem/addItem";
 import ProjectItem from "../projectItem/projectItem";
 import styles from "./projects.module.css";
 
-const Projects = ({ projectList, onAddClick }) => {
+const Projects = ({
+  projectList,
+  onAddClick,
+  deleteModalStatus,
+  handleModalStatus,
+  deleteProject,
+}) => {
   const list = Object.keys(projectList)
     .map((key) => {
       return projectList[key];
@@ -16,7 +22,15 @@ const Projects = ({ projectList, onAddClick }) => {
       <ul className={styles.list}>
         <AddItem onAddClick={onAddClick} />
         {list.map((element) => {
-          return <ProjectItem key={element.id} item={element} />;
+          return (
+            <ProjectItem
+              key={element.id}
+              item={element}
+              deleteModalStatus={deleteModalStatus}
+              handleModalStatus={handleModalStatus}
+              deleteProject={deleteProject}
+            />
+          );
         })}
       </ul>
     </div>
