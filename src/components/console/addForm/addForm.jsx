@@ -35,8 +35,9 @@ const Addform = ({
     const id = Date.now();
     const date = getTime(id);
     const newItem = {
-      id: id,
-      date: date,
+      userId,
+      id,
+      date,
       projectName: "",
     };
     return newItem;

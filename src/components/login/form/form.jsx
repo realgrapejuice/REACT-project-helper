@@ -14,7 +14,7 @@ const Form = ({ authService, setSignStatus }) => {
   // Make route change
   const goToConsole = (userId) => {
     history.push({
-      pathname: `/console/${userId}`,
+      pathname: `/console`,
       state: { id: userId },
     });
   };

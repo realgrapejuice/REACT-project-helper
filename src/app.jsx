@@ -1,14 +1,16 @@
 import styles from "./app.module.css";
 import Header from "./components/header/header";
 import LogIn from "./components/login/login";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
 import SignUp from "./components/signUp/signUp";
 import FindPW from "./components/login/findPW/findPW";
 import Console from "./components/console/console";
 import { useState } from "react";
+import UserProject from "./components/console/userProject/userProject";
 
 function App({ authService, database }) {
   const [signStatus, setSignStatus] = useState(false);
+  const [projectList, setProjectList] = useState({});
 
   return (
     <BrowserRouter>
@@ -27,7 +29,11 @@ function App({ authService, database }) {
             />
           </Route>
           <Route path="/console">
-            <Console database={database} />
+            <Console
+              database={database}
+              projectList={projectList}
+              setProjectList={setProjectList}
+            />
           </Route>
           <Route path="/forgot-password">
             <FindPW authService={authService} />

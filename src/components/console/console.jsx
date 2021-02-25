@@ -4,7 +4,7 @@ import Projects from "./projects/projects";
 import Addform from "./addForm/addForm";
 import { useHistory } from "react-router-dom";
 
-const Console = ({ database }) => {
+const Console = ({ database, projectList, setProjectList }) => {
   // Relative with history
   const history = useHistory();
 
@@ -12,7 +12,6 @@ const Console = ({ database }) => {
   const [USERID, setUSERID] = useState(history && history.location.state.id);
 
   // Relative with projectList
-  const [projectList, setProjectList] = useState({});
 
   // Relative with addStatus
   const [addStatus, setAddStatus] = useState(false);
@@ -44,6 +43,7 @@ const Console = ({ database }) => {
           projectList={projectList}
           onAddClick={toggleAddClick}
           deleteProject={deleteProject}
+          userId={USERID}
         />
       ) : (
         <Addform

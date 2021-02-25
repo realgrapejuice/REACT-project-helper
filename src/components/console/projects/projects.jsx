@@ -3,7 +3,7 @@ import AddItem from "../addItem/addItem";
 import ProjectItem from "../projectItem/projectItem";
 import styles from "./projects.module.css";
 
-const Projects = ({ projectList, onAddClick, deleteProject }) => {
+const Projects = ({ projectList, onAddClick, deleteProject, userId }) => {
   const list = Object.keys(projectList)
     .map((key) => {
       return projectList[key];
@@ -21,6 +21,7 @@ const Projects = ({ projectList, onAddClick, deleteProject }) => {
               key={element.id}
               item={element}
               deleteProject={deleteProject}
+              userId={userId}
             />
           );
         })}
