@@ -3,13 +3,7 @@ import AddItem from "../addItem/addItem";
 import ProjectItem from "../projectItem/projectItem";
 import styles from "./projects.module.css";
 
-const Projects = ({
-  projectList,
-  onAddClick,
-  deleteModalStatus,
-  handleModalStatus,
-  deleteProject,
-}) => {
+const Projects = ({ projectList, onAddClick, deleteProject }) => {
   const list = Object.keys(projectList)
     .map((key) => {
       return projectList[key];
@@ -26,8 +20,6 @@ const Projects = ({
             <ProjectItem
               key={element.id}
               item={element}
-              deleteModalStatus={deleteModalStatus}
-              handleModalStatus={handleModalStatus}
               deleteProject={deleteProject}
             />
           );

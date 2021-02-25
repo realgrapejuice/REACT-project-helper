@@ -22,14 +22,6 @@ const Console = ({ database }) => {
   };
 
   // Relative with deleteModal in projects > projectItem
-  const [deleteModalStatus, setDeleteModalStatus] = useState(true);
-
-  const handleModalStatus = () => {
-    deleteModalStatus
-      ? setDeleteModalStatus(false)
-      : setDeleteModalStatus(true);
-  };
-
   const deleteProject = (item) => {
     const updated = { ...projectList };
     delete updated[item.id];
@@ -51,8 +43,6 @@ const Console = ({ database }) => {
         <Projects
           projectList={projectList}
           onAddClick={toggleAddClick}
-          deleteModalStatus={deleteModalStatus}
-          handleModalStatus={handleModalStatus}
           deleteProject={deleteProject}
         />
       ) : (

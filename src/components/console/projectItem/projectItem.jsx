@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./projectItem.module.css";
 
-const ProjectItem = ({
-  item,
-  deleteModalStatus,
-  handleModalStatus,
-  deleteProject,
-}) => {
-  const deleteBoxStyle = !deleteModalStatus
+const ProjectItem = ({ item, deleteProject }) => {
+  const [status, setStatus] = useState(false);
+
+  const toggleStatus = () => {
+    status ? setStatus(false) : setStatus(true);
+  };
+
+  const boxStyle = status
     ? `${styles.checkDelete} visible`
     : `${styles.checkDelete} hidden`;
 
   const handleCancelClick = () => {
-    handleModalStatus();
+    toggleStatus();
   };
 
   const handleDeleteClick = (event) => {
     event.preventDefault();
     deleteProject(item);
-    handleModalStatus();
+    toggleStatus();
   };
 
   return (
@@ -26,13 +27,13 @@ const ProjectItem = ({
       <div className={styles.projectBox}>
         <h1>{item.projectName}</h1>
         <span className={styles.date}>{`Created on ${item.date}`}</span>
-        <div className={styles.modal} onClick={handleModalStatus}>
+        <div className={styles.modal} onClick={toggleStatus}>
           <i className="fas fa-times"></i>
         </div>
         <div className={styles.icon}>
           <i className="far fa-folder"></i>
         </div>
-        <div className={deleteBoxStyle}>
+        <div className={boxStyle}>
           <h1 className={styles.deleteTitle}>Are you sure?</h1>
           <span className={styles.deleteDesc}>
             Deleted project cannot be recovered
