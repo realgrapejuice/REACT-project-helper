@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
+import { Link, useHistory } from "react-router-dom";
 import styles from "./nav.module.css";
 
 const Nav = ({ authService, signStatus, setSignStatus }) => {
   const history = useHistory();
-  const currentPath = history.location.pathname;
+
   const handleSignOut = () => {
     authService //
       .signOut()
@@ -13,22 +13,44 @@ const Nav = ({ authService, signStatus, setSignStatus }) => {
 
   return (
     <nav className={styles.navBox}>
-      <a href="/about">About</a>
-      <a href="/method">How to Use</a>
-      <a href="/contact">Contact</a>
-      {!signStatus && currentPath === "/login" ? (
+      <Link to="/about">
+        <span className={styles.about}>About</span>
+      </Link>
+      <Link to="/method">
+        <span className={styles.method}>Method</span>
+      </Link>
+      <Link to="/contact">
+        <span className={styles.contact}>Contact</span>
+      </Link>
+      {!signStatus ? (
         <>
-          <a className={styles.login} href="/login">
-            Log-in
-          </a>
-          <a className={styles.sign} href="/signup">
-            Sign Up for Free
-          </a>
+          <Link to="/login">
+            <span className={styles.login}>Log-in</span>
+          </Link>
+          <Link to="/signup">
+            <span className={styles.sign}>Sign Up for Free</span>
+          </Link>
         </>
       ) : (
-        <a className={styles.sign} href="/login" onClick={handleSignOut}>
-          Sign Out
-        </a>
+        <>
+          <Link to="/login">
+            <span className={styles.sign} onClick={handleSignOut}>
+              Sign Out
+            </span>
+          </Link>
+          <Link
+            to={{
+              pathname: "/console",
+              state: {
+                id: history.location.state.id,
+              },
+            }}
+          >
+            <span className={styles.console} title="Go Back To Console">
+              <i className="fas fa-folder"></i>
+            </span>
+          </Link>
+        </>
       )}
     </nav>
   );

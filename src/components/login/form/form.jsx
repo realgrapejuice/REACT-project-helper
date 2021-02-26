@@ -35,8 +35,10 @@ const Form = ({ authService, setSignStatus }) => {
 
   useEffect(() => {
     authService.onAuthChange((user) => {
-      user && goToConsole(user.X.X);
-      user && setSignStatus(true);
+      if (user) {
+        setSignStatus(true);
+        goToConsole(user.X.X);
+      }
     });
   });
 

@@ -5,6 +5,7 @@ import styles from "./login.module.css";
 
 const LogIn = ({ authService, setSignStatus }) => {
   const history = useHistory();
+  console.log(history);
 
   const createSquare = () => {
     const container = document.querySelector("#container");

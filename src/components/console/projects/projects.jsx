@@ -3,13 +3,7 @@ import AddItem from "../addItem/addItem";
 import ProjectItem from "../projectItem/projectItem";
 import styles from "./projects.module.css";
 
-const Projects = ({ projectList, onAddClick, deleteProject, userId }) => {
-  const list = Object.keys(projectList)
-    .map((key) => {
-      return projectList[key];
-    })
-    .reverse();
-
+const Projects = ({ onAddClick, deleteProject, userId, list }) => {
   return (
     <div className={styles.container}>
       <h1>Project in Progress</h1>

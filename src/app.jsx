@@ -1,17 +1,16 @@
 import styles from "./app.module.css";
 import Header from "./components/header/header";
 import LogIn from "./components/login/login";
-import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignUp from "./components/signUp/signUp";
 import FindPW from "./components/login/findPW/findPW";
 import Console from "./components/console/console";
 import { useState } from "react";
-import UserProject from "./components/console/userProject/userProject";
 
 function App({ authService, database }) {
   const [signStatus, setSignStatus] = useState(false);
   const [projectList, setProjectList] = useState({});
-
+  console.log(signStatus);
   return (
     <BrowserRouter>
       <div className={styles.container}>
@@ -24,15 +23,16 @@ function App({ authService, database }) {
           <Route exact path={["/", "/login"]}>
             <LogIn
               authService={authService}
-              signStatus={signStatus}
               setSignStatus={setSignStatus}
+              signStatus={signStatus}
             />
           </Route>
-          <Route path="/console">
+          <Route path="/console" component={Console}>
             <Console
               database={database}
               projectList={projectList}
               setProjectList={setProjectList}
+              setSignStatus={setSignStatus}
             />
           </Route>
           <Route path="/forgot-password">

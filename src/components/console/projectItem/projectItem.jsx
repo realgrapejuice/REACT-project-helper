@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import UserProject from "../userProject/userProject";
+import { Link } from "react-router-dom";
 import styles from "./projectItem.module.css";
 
 const ProjectItem = ({ item, deleteProject, userId }) => {
@@ -26,14 +25,15 @@ const ProjectItem = ({ item, deleteProject, userId }) => {
 
   return (
     <li className={styles.projectItem}>
-      <div className={styles.projectBox}>
-        <h1>{item.projectName}</h1>
-        <span className={styles.date}>{`Created on ${item.date}`}</span>
-        <div className={styles.icon}>
-          <i className="far fa-folder"></i>
+      <Link to={`/console/${item.id}`}>
+        <div className={styles.projectBox}>
+          <h1>{item.projectName}</h1>
+          <span className={styles.date}>{`Created on ${item.date}`}</span>
+          <div className={styles.icon}>
+            <i className="far fa-folder"></i>
+          </div>
         </div>
-      </div>
-
+      </Link>
       <div className={styles.modal} onClick={toggleStatus}>
         <i className="fas fa-times"></i>
       </div>
