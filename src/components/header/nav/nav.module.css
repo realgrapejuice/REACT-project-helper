@@ -1,5 +1,6 @@
 .navBox {
   display: flex;
+  align-items: center;
 }
 
 .about,

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Auth from "../aut/auth";
 import styles from "./form.module.css";
 
-const Form = ({ authService, setSignStatus }) => {
+const Form = ({ authService, setSignStatus, signStatus }) => {
   //Router Variable
   const history = useHistory();
 
@@ -40,7 +40,7 @@ const Form = ({ authService, setSignStatus }) => {
         goToConsole(user.X.X);
       }
     });
-  });
+  }, [signStatus]);
 
   return (
     <section className={styles.container}>

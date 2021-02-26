@@ -1,9 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import styles from "./userProject.module.css";
 
-const UserProject = ({ list }) => {
-  console.log(list);
-  return <h1 className={styles.h1}>Hi</h1>;
+const UserProject = ({ projectList }) => {
+  const history = useHistory();
+  const index = history.location.state.url;
+  const currentList = projectList[index];
+  const todo = currentList.todo;
+  console.log(todo);
+  return <h1>Hello</h1>;
 };
 
 export default UserProject;

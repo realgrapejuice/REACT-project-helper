@@ -25,7 +25,15 @@ const ProjectItem = ({ item, deleteProject, userId }) => {
 
   return (
     <li className={styles.projectItem}>
-      <Link to={`/console/${item.id}`}>
+      <Link
+        to={{
+          pathname: `/console/${item.id}`,
+          state: {
+            id: userId,
+            url: item.id,
+          },
+        }}
+      >
         <div className={styles.projectBox}>
           <h1>{item.projectName}</h1>
           <span className={styles.date}>{`Created on ${item.date}`}</span>

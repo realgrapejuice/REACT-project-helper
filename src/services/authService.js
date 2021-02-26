@@ -1,6 +1,16 @@
 import { firebaseAuth, googleProvider, githubProvider } from "./reset_firebase";
+import firebase from "firebase";
 
 class AuthService {
+  getUser() {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      return user.uid;
+    } else {
+      console.log("Error");
+    }
+  }
+
   getAuthProvider(providerName) {
     switch (providerName) {
       case "Google":

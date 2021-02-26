@@ -5,19 +5,29 @@ import Addform from "./addForm/addForm";
 import { Route, useHistory } from "react-router-dom";
 import UserProject from "./userProject/userProject";
 
-const Console = ({ database, projectList, setProjectList, setSignStatus }) => {
-  // Relative with history
-  const history = useHistory();
-
-  // Relative with UserId
-  const USERID = history && history.location.state.id;
-
+const Console = ({
+  authService,
+  database,
+  projectList,
+  setProjectList,
+  setSignStatus,
+}) => {
   // Relative with addStatus
   const [addStatus, setAddStatus] = useState(false);
 
   const toggleAddClick = () => {
     addStatus ? setAddStatus(false) : setAddStatus(true);
   };
+
+  // Relative with history
+  const history = useHistory();
+  // Relative with UserId
+  let USERID;
+  if (history.location.state.id) {
+    USERID = history.location.state.id;
+  } else {
+    USERID = authService.getUser();
+  }
 
   // Relative with deleteModal in projects > projectItem
   const deleteProject = (item) => {
@@ -64,7 +74,7 @@ const Console = ({ database, projectList, setProjectList, setSignStatus }) => {
         )}
       </Route>
       <Route path={`/console/:id`}>
-        <UserProject list={list} />
+        <UserProject projectList={projectList} userId={USERID} />
       </Route>
     </section>
   );

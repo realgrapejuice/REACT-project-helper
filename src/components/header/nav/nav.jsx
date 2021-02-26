@@ -33,11 +33,9 @@ const Nav = ({ authService, signStatus, setSignStatus }) => {
         </>
       ) : (
         <>
-          <Link to="/login">
-            <span className={styles.sign} onClick={handleSignOut}>
-              Sign Out
-            </span>
-          </Link>
+          <a href="/login" className={styles.sign} onClick={handleSignOut}>
+            Sign Out
+          </a>
           <Link
             to={{
               pathname: "/console",

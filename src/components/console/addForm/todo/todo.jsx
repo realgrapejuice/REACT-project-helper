@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./todo.module.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-const Todo = ({ todo, setTodo, onDelete, onDragEnd }) => {
+const Todo = ({ todo, onDelete, onDragEnd }) => {
   const handleDelete = (item) => {
     onDelete(item);
   };

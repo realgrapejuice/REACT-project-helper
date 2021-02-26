@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Form from "./form/form";
 import styles from "./login.module.css";
 
-const LogIn = ({ authService, setSignStatus }) => {
+const LogIn = ({ authService, setSignStatus, signStatus }) => {
   const history = useHistory();
   console.log(history);
 
@@ -40,7 +40,11 @@ const LogIn = ({ authService, setSignStatus }) => {
 
   return (
     <main id="container" className={styles.container}>
-      <Form authService={authService} setSignStatus={setSignStatus} />
+      <Form
+        authService={authService}
+        setSignStatus={setSignStatus}
+        signStatus={signStatus}
+      />
     </main>
   );
 };

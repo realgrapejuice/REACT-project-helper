@@ -10,7 +10,7 @@ import { useState } from "react";
 function App({ authService, database }) {
   const [signStatus, setSignStatus] = useState(false);
   const [projectList, setProjectList] = useState({});
-  console.log(signStatus);
+
   return (
     <BrowserRouter>
       <div className={styles.container}>
@@ -29,6 +29,7 @@ function App({ authService, database }) {
           </Route>
           <Route path="/console" component={Console}>
             <Console
+              authService={authService}
               database={database}
               projectList={projectList}
               setProjectList={setProjectList}
