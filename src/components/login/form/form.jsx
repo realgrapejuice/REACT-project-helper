@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useRef } from "react";
+import { Link, useHistory } from "react-router-dom";
 import Auth from "../aut/auth";
 import styles from "./form.module.css";
 
-const Form = ({ authService, setSignStatus }) => {
+const Form = ({ authService }) => {
   //Router Variable
   const history = useHistory();
 
@@ -47,9 +47,9 @@ const Form = ({ authService, setSignStatus }) => {
       <header className={styles.header}>
         <h1>Log In</h1>
         <span>New to StepbyStep?</span>
-        <a className={styles.signup} href="/signup">
-          Sign Up For Free
-        </a>
+        <Link to="/signup">
+          <span className={styles.signup}>Sign Up For Free</span>
+        </Link>
       </header>
       <form className={styles.form} onSubmit={handleLogIn}>
         <input
@@ -66,9 +66,9 @@ const Form = ({ authService, setSignStatus }) => {
           placeholder="Password"
           required
         />
-        <a className={styles.forget} href="/forgot-password">
-          Forgot Password?
-        </a>
+        <Link to="/forgot-password">
+          <span className={styles.forget}>Forgot Password?</span>
+        </Link>
         <button className={styles.login} type="submit">
           Log In
         </button>
