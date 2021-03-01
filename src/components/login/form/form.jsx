@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Auth from "../aut/auth";
 import styles from "./form.module.css";
 
-const Form = ({ authService, setSignStatus, signStatus }) => {
+const Form = ({ authService, setSignStatus }) => {
   //Router Variable
   const history = useHistory();
 
@@ -33,14 +33,14 @@ const Form = ({ authService, setSignStatus, signStatus }) => {
     passwordRef.current.value = "";
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
         setSignStatus(true);
         goToConsole(user.X.X);
       }
     });
-  }, [signStatus]);
+  }, [signStatus]); */
 
   return (
     <section className={styles.container}>

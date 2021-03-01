@@ -2,17 +2,16 @@ import React from "react";
 import styles from "./header.module.css";
 import Nav from "./nav/nav";
 
-const Header = ({ authService, signStatus, setSignStatus, goToConsole }) => {
+const Header = ({ handleSignOut, signStatus, userId }) => {
   return (
     <header className={styles.container}>
       <div className={styles.logo}>
         <h1>logoinhere</h1>
       </div>
       <Nav
-        goToConsole={goToConsole}
-        authService={authService}
+        handleSignOut={handleSignOut}
         signStatus={signStatus}
-        setSignStatus={setSignStatus}
+        userId={userId}
       />
     </header>
   );

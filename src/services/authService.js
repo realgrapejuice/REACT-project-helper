@@ -7,7 +7,7 @@ class AuthService {
     if (user) {
       return user.uid;
     } else {
-      console.log("Error");
+      return null;
     }
   }
 

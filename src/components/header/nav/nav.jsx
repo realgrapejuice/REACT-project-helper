@@ -1,15 +1,11 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./nav.module.css";
 
-const Nav = ({ authService, signStatus, setSignStatus }) => {
-  const history = useHistory();
-
-  const handleSignOut = () => {
-    authService //
-      .signOut()
-      .then(setSignStatus(false));
-  };
+const Nav = ({ signStatus, handleSignOut, userId }) => {
+  const consoleIconStyle = signStatus
+    ? `${styles.console} visible`
+    : `${styles.console} hidden`;
 
   return (
     <nav className={styles.navBox}>
@@ -33,23 +29,30 @@ const Nav = ({ authService, signStatus, setSignStatus }) => {
         </>
       ) : (
         <>
-          <a href="/login" className={styles.sign} onClick={handleSignOut}>
-            Sign Out
-          </a>
           <Link
             to={{
-              pathname: "/console",
-              state: {
-                id: history.location.state.id,
-              },
+              pathname: "/",
+              state: null,
             }}
           >
-            <span className={styles.console} title="Go Back To Console">
-              <i className="fas fa-folder"></i>
+            <span className={styles.sign} onClick={handleSignOut}>
+              Sign Out
             </span>
           </Link>
         </>
       )}
+      <Link
+        to={{
+          pathname: "/console",
+          state: {
+            id: userId,
+          },
+        }}
+      >
+        <span className={consoleIconStyle} title="Go Back To Console">
+          <i className="fas fa-folder"></i>
+        </span>
+      </Link>
     </nav>
   );
 };

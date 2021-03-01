@@ -1,23 +1,38 @@
 import styles from "./app.module.css";
 import Header from "./components/header/header";
 import LogIn from "./components/login/login";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignUp from "./components/signUp/signUp";
 import FindPW from "./components/login/findPW/findPW";
 import Console from "./components/console/console";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useState } from "react";
+import firebase from "firebase";
 
 function App({ authService, database }) {
   const [signStatus, setSignStatus] = useState(false);
   const [projectList, setProjectList] = useState({});
+  let userId = authService.getUser();
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      setSignStatus(true);
+    } else {
+      setSignStatus(false);
+    }
+  });
+
+  const handleSignOut = () => {
+    authService //
+      .signOut();
+  };
 
   return (
     <BrowserRouter>
       <div className={styles.container}>
         <Header
-          authService={authService}
+          handleSignOut={handleSignOut}
           signStatus={signStatus}
-          setSignStatus={setSignStatus}
+          userId={userId}
         />
         <Switch>
           <Route exact path={["/", "/login"]}>
@@ -27,7 +42,7 @@ function App({ authService, database }) {
               signStatus={signStatus}
             />
           </Route>
-          <Route path="/console" component={Console}>
+          <Route path="/console">
             <Console
               authService={authService}
               database={database}
