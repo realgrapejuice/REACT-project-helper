@@ -47,12 +47,7 @@ const SecondForm = ({
             required
           />
         </form>
-        <Todo
-          todo={todo}
-          setTodo={setTodo}
-          onDelete={onDelete}
-          onDragEnd={onDragEnd}
-        />
+        <Todo todo={todo} onDelete={onDelete} onDragEnd={onDragEnd} />
       </div>
       <PrevBtn goPrev={goPrev} />
       <SaveBtn

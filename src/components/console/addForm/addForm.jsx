@@ -138,7 +138,6 @@ const Addform = ({
       return (
         <FirstForm
           onXClick={onXClick}
-          saveStatus={saveStatus}
           onToggle={toggleStatus}
           saveName={saveName}
           setTodoName={setTodoName}

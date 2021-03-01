@@ -6,7 +6,6 @@ const UserProject = ({ projectList }) => {
   const history = useHistory();
   const index = history.location.state.url;
   const currentList = projectList[index];
-  const todo = currentList.todo;
 
   return <h1>Hello</h1>;
 };

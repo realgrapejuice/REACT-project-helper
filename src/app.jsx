@@ -36,11 +36,7 @@ function App({ authService, database }) {
         />
         <Switch>
           <Route exact path={["/", "/login"]}>
-            <LogIn
-              authService={authService}
-              setSignStatus={setSignStatus}
-              signStatus={signStatus}
-            />
+            <LogIn authService={authService} setSignStatus={setSignStatus} />
           </Route>
           <Route path="/console">
             <Console
@@ -49,6 +45,7 @@ function App({ authService, database }) {
               projectList={projectList}
               setProjectList={setProjectList}
               setSignStatus={setSignStatus}
+              userId={userId}
             />
           </Route>
           <Route path="/forgot-password">

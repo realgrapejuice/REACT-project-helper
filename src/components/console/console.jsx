@@ -6,11 +6,11 @@ import { Route, useHistory } from "react-router-dom";
 import UserProject from "./userProject/userProject";
 
 const Console = ({
-  authService,
   database,
   projectList,
   setProjectList,
   setSignStatus,
+  userId,
 }) => {
   // Relative with addStatus
   const [addStatus, setAddStatus] = useState(false);
@@ -19,22 +19,12 @@ const Console = ({
     addStatus ? setAddStatus(false) : setAddStatus(true);
   };
 
-  // Relative with history
-  const history = useHistory();
-  // Relative with UserId
-  let USERID;
-  if (history.location.state.id) {
-    USERID = history.location.state.id;
-  } else {
-    USERID = authService.getUser();
-  }
-
   // Relative with deleteModal in projects > projectItem
   const deleteProject = (item) => {
     const updated = { ...projectList };
     delete updated[item.id];
     setProjectList(updated);
-    database.delete(USERID, item);
+    database.delete(userId, item);
   };
 
   const list = Object.keys(projectList)
@@ -44,23 +34,22 @@ const Console = ({
     .reverse();
 
   useEffect(() => {
-    if (!USERID) return;
-    const stopSync = database.read(USERID, (projects) => {
+    if (!userId) return;
+    const stopSync = database.read(userId, (projects) => {
       setProjectList(projects);
     });
     setSignStatus(true);
     return () => stopSync();
-  }, [USERID, database, setProjectList]);
+  }, [userId, database, setProjectList]);
 
   return (
     <section className={styles.container}>
       <Route exact path="/console">
         {!addStatus ? (
           <Projects
-            projectList={projectList}
             onAddClick={toggleAddClick}
             deleteProject={deleteProject}
-            userId={USERID}
+            userId={userId}
             list={list}
           />
         ) : (
@@ -69,12 +58,12 @@ const Console = ({
             projectList={projectList}
             setProjectList={setProjectList}
             database={database}
-            userId={USERID}
+            userId={userId}
           />
         )}
       </Route>
       <Route path={`/console/:id`}>
-        <UserProject projectList={projectList} userId={USERID} />
+        <UserProject projectList={projectList} />
       </Route>
     </section>
   );
