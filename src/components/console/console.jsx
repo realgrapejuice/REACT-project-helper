@@ -19,6 +19,12 @@ const Console = ({
     addStatus ? setAddStatus(false) : setAddStatus(true);
   };
 
+  const list = Object.keys(projectList)
+    .map((key) => {
+      return projectList[key];
+    })
+    .reverse();
+
   // Relative with deleteModal in projects > projectItem
   const deleteProject = (item) => {
     const updated = { ...projectList };
@@ -26,12 +32,6 @@ const Console = ({
     setProjectList(updated);
     database.delete(userId, item);
   };
-
-  const list = Object.keys(projectList)
-    .map((key) => {
-      return projectList[key];
-    })
-    .reverse();
 
   useEffect(() => {
     if (!userId) return;
@@ -63,7 +63,12 @@ const Console = ({
         )}
       </Route>
       <Route path={`/console/:id`}>
-        <UserProject projectList={projectList} />
+        <UserProject
+          database={database}
+          projectList={projectList}
+          setProjectList={setProjectList}
+          userId={userId}
+        />
       </Route>
     </section>
   );

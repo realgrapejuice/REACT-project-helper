@@ -33,15 +33,6 @@ const Form = ({ authService }) => {
     passwordRef.current.value = "";
   };
 
-  /* useEffect(() => {
-    authService.onAuthChange((user) => {
-      if (user) {
-        setSignStatus(true);
-        goToConsole(user.X.X);
-      }
-    });
-  }, [signStatus]); */
-
   return (
     <section className={styles.container}>
       <header className={styles.header}>
@@ -64,6 +55,7 @@ const Form = ({ authService }) => {
           className={styles.password}
           type="password"
           placeholder="Password"
+          autoComplete="new-password"
           required
         />
         <Link to="/forgot-password">

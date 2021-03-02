@@ -5,7 +5,7 @@ import SignUp from "./components/signUp/signUp";
 import FindPW from "./components/login/findPW/findPW";
 import Console from "./components/console/console";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import firebase from "firebase";
 
 function App({ authService, database }) {
@@ -25,6 +25,15 @@ function App({ authService, database }) {
     authService //
       .signOut();
   };
+
+  useEffect(() => {
+    if (projectList) return;
+    const stopSync = database.read(userId, (projects) => {
+      setProjectList(projects);
+    });
+    setSignStatus(true);
+    return () => stopSync();
+  }, [projectList, database, setProjectList]);
 
   return (
     <BrowserRouter>

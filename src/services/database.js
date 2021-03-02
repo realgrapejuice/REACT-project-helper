@@ -5,10 +5,6 @@ class Database {
     firebaseDatabase.ref(`${userId}/users/${project.id}`).set(project);
   }
 
-  delete(userId, project) {
-    firebaseDatabase.ref(`${userId}/users/${project.id}`).remove();
-  }
-
   read(userId, onUpdate) {
     const cardRef = firebaseDatabase.ref(`${userId}/users`);
     cardRef.on("value", (snapshot) => {
@@ -16,6 +12,16 @@ class Database {
       value && onUpdate(value);
     });
     return () => cardRef.off();
+  }
+
+  update(userId, project, todo) {
+    firebaseDatabase.ref(`${userId}/users/${project.id}`).update({
+      todo: todo,
+    });
+  }
+
+  delete(userId, project) {
+    firebaseDatabase.ref(`${userId}/users/${project.id}`).remove();
   }
 }
 

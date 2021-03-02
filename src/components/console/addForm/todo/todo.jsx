@@ -17,37 +17,38 @@ const Todo = ({ todo, onDelete, onDragEnd }) => {
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              {todo.map((element, index) => {
-                return (
-                  <Draggable
-                    key={`${element}-${index}`}
-                    draggableId={`${element}-${index}`}
-                    index={index}
-                  >
-                    {(provided) => (
-                      <li
-                        key={index}
-                        className="dragItem"
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        <div className={styles.icon}>
-                          <i className="fas fa-grip-vertical"></i>
-                        </div>
-                        <span>{element}</span>
-                        <button
-                          type="button"
-                          className={styles.delete}
-                          onClick={handleDelete}
+              {todo &&
+                todo.map((element, index) => {
+                  return (
+                    <Draggable
+                      key={`${element}-${index}`}
+                      draggableId={`${element}-${index}`}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <li
+                          key={index}
+                          className="dragItem"
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
                         >
-                          <i className="far fa-trash-alt"></i>
-                        </button>
-                      </li>
-                    )}
-                  </Draggable>
-                );
-              })}
+                          <div className={styles.icon}>
+                            <i className="fas fa-grip-vertical"></i>
+                          </div>
+                          <span>{element}</span>
+                          <button
+                            type="button"
+                            className={styles.delete}
+                            onClick={handleDelete}
+                          >
+                            <i className="far fa-trash-alt"></i>
+                          </button>
+                        </li>
+                      )}
+                    </Draggable>
+                  );
+                })}
               {provided.placeholder}
             </ol>
           );

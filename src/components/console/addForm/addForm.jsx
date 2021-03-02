@@ -53,14 +53,6 @@ const Addform = ({
     setVirtualList(list);
   };
 
-  //Relative with todo
-  const [todo, setTodo] = useState([]);
-
-  const findIndex = (item) => {
-    const index = todo.indexOf(item);
-    return index;
-  };
-
   const handleDelete = (event) => {
     const node = event.target.parentNode;
     const copiedTodo = [...todo];
@@ -77,6 +69,35 @@ const Addform = ({
     }
     copiedTodo.splice(index, 1);
     setTodo(copiedTodo);
+  };
+
+  //Relative with todo
+  const [todo, setTodo] = useState([]);
+
+  const findIndex = (item) => {
+    const index = todo.indexOf(item);
+    return index;
+  };
+
+  // Relative with dnd
+  const reorder = (todo, startIndex, endIndex) => {
+    const copiedTodo = [...todo];
+    const removed = copiedTodo.splice(startIndex, 1)[0];
+    copiedTodo.splice(endIndex, 0, removed);
+
+    return copiedTodo;
+  };
+
+  const onDragEnd = (result) => {
+    const { source, destination } = result;
+    if (!destination) {
+      return;
+    }
+
+    if (source.droppableId === "droppable") {
+      const items = reorder(todo, source.index, destination.index);
+      setTodo(items);
+    }
   };
 
   // Relative with todo-name
@@ -110,27 +131,6 @@ const Addform = ({
       console.log("Error");
       break;
   }
-
-  // Relative with dnd
-  const reorder = (todo, startIndex, endIndex) => {
-    const copiedTodo = [...todo];
-    const removed = copiedTodo.splice(startIndex, 1)[0];
-    copiedTodo.splice(endIndex, 0, removed);
-
-    return copiedTodo;
-  };
-
-  const onDragEnd = (result) => {
-    const { source, destination } = result;
-    if (!destination) {
-      return;
-    }
-
-    if (source.droppableId === "droppable") {
-      const items = reorder(todo, source.index, destination.index);
-      setTodo(items);
-    }
-  };
 
   //render
   switch (step) {
