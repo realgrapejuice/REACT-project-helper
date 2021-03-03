@@ -122,10 +122,10 @@ const Addform = ({
   let title;
   switch (step) {
     case STEP1:
-      title = "투두리스트의 이름을 만들어주세요";
+      title = "Name your project";
       break;
     case STEP2:
-      title = "할 일을 적고 우선순위대로 나열해보세요";
+      title = "Make a Todo-list and list them in order of priority.";
       break;
     default:
       console.log("Error");

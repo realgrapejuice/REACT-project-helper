@@ -12,7 +12,13 @@ const UserProject = ({ database, userId }) => {
   const projectName = currentProject && currentProject.projectName;
   const projectId = history.location.state.url;
 
+  // Relative with input
   const inputRef = useRef();
+  const checkRef = useRef();
+
+  const handleCheckStatus = () => {
+    console.log(checkRef);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -57,14 +63,10 @@ const UserProject = ({ database, userId }) => {
 
   const onDragEnd = (result) => {
     const { source, destination } = result;
-    if (!destination) {
-      return;
-    }
-
+    if (!destination) return;
     if (source.droppableId === "droppable") {
       const items = reorder(projectTodo, source.index, destination.index);
       projectTodo = items;
-      // database update!
       database.update(userId, currentProject, items);
     }
   };
@@ -117,10 +119,22 @@ const UserProject = ({ database, userId }) => {
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                           >
-                            <div className={styles.icon}>
-                              <i className="fas fa-grip-vertical"></i>
+                            <div className={styles.checkbtn}>
+                              <input
+                                ref={checkRef}
+                                className={styles.icon}
+                                type="checkbox"
+                                id={`check${index}`}
+                                onChange={handleCheckStatus}
+                              />
+
+                              <label
+                                className={styles.label}
+                                htmlFor={`check${index}`}
+                              ></label>
+                              <span className={styles.item}>{element}</span>
                             </div>
-                            <span>{element}</span>
+
                             <button
                               type="button"
                               className={styles.delete}

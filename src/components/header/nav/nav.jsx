@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./nav.module.css";
 
@@ -6,6 +6,9 @@ const Nav = ({ signStatus, handleSignOut, userId }) => {
   const consoleIconStyle = signStatus
     ? `${styles.console} visible`
     : `${styles.console} hidden`;
+
+  const spanRef = useRef();
+  console.log(spanRef);
 
   return (
     <nav className={styles.navBox}>
@@ -49,7 +52,11 @@ const Nav = ({ signStatus, handleSignOut, userId }) => {
           },
         }}
       >
-        <span className={consoleIconStyle} title="Go Back To Console">
+        <span
+          ref={spanRef}
+          className={consoleIconStyle}
+          title="Go Back To Console"
+        >
           <i className="fas fa-folder"></i>
         </span>
       </Link>
