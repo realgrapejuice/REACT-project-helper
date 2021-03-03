@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./console.module.css";
 import Projects from "./projects/projects";
 import Addform from "./addForm/addForm";
-import { Route, useHistory } from "react-router-dom";
+import { Route } from "react-router-dom";
 import UserProject from "./userProject/userProject";
 
 const Console = ({
@@ -63,12 +63,7 @@ const Console = ({
         )}
       </Route>
       <Route path={`/console/:id`}>
-        <UserProject
-          database={database}
-          projectList={projectList}
-          setProjectList={setProjectList}
-          userId={userId}
-        />
+        <UserProject database={database} userId={userId} />
       </Route>
     </section>
   );

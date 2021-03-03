@@ -1,32 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./userProject.module.css";
 import { useHistory } from "react-router-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-const UserProject = ({ database, projectList, setProjectList, userId }) => {
+const UserProject = ({ database, userId }) => {
   const history = useHistory();
   const index = history.location.state.url;
-  const currentList = projectList[index];
-  console.log(projectList);
-  console.log(currentList);
-  const [todo, setTodo] = useState(currentList.todo);
+  const [currentProject, setCurrentProject] = useState();
 
-  const updateProjectList = () => {
-    const copiedProjectList = { ...projectList };
-    const currentList = copiedProjectList[index];
-    currentList.todo = todo;
-    setProjectList(copiedProjectList);
-  };
+  const projectTodo = currentProject && currentProject.todo;
 
   // Find delete item index
   const findIndex = (item) => {
-    const index = todo.indexOf(item);
+    const index = projectTodo.indexOf(item);
     return index;
   };
 
   const handleDelete = (event) => {
     const node = event.target.parentNode;
-    const copiedTodo = [...todo];
+    const copiedTodo = projectTodo;
     let item;
     let index;
     if (node.className === "dragItem") {
@@ -39,14 +31,14 @@ const UserProject = ({ database, projectList, setProjectList, userId }) => {
       return;
     }
     copiedTodo.splice(index, 1);
-    setTodo(copiedTodo);
+    setCurrentProject(copiedTodo);
     // database update!
-    database.update(userId, currentList, copiedTodo);
+    database.update(userId, currentProject && currentProject, copiedTodo);
   };
 
   // Relative with dnd
   const reorder = (todo, startIndex, endIndex) => {
-    const copiedTodo = [...todo];
+    const copiedTodo = todo;
     const removed = copiedTodo.splice(startIndex, 1)[0];
     copiedTodo.splice(endIndex, 0, removed);
 
@@ -60,13 +52,24 @@ const UserProject = ({ database, projectList, setProjectList, userId }) => {
     }
 
     if (source.droppableId === "droppable") {
-      const items = reorder(todo, source.index, destination.index);
-      setTodo(items);
-      updateProjectList();
+      const items = reorder(projectTodo, source.index, destination.index);
+      setCurrentProject(items);
       // database update!
-      database.update(userId, currentList, items);
+      database.update(userId, currentProject && currentProject, items);
     }
   };
+
+  useEffect(() => {
+    if (currentProject) return;
+    const stopSync = database.readProject(
+      userId,
+      (projects) => {
+        setCurrentProject(projects);
+      },
+      index
+    );
+    return () => stopSync();
+  }, [userId, database, setCurrentProject]);
 
   return (
     <div className={styles.container}>
@@ -79,37 +82,38 @@ const UserProject = ({ database, projectList, setProjectList, userId }) => {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                {todo.map((element, index) => {
-                  return (
-                    <Draggable
-                      key={`${element}-${index}`}
-                      draggableId={`${element}-${index}`}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <li
-                          key={index}
-                          className="dragItem"
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <div className={styles.icon}>
-                            <i className="fas fa-grip-vertical"></i>
-                          </div>
-                          <span>{element}</span>
-                          <button
-                            type="button"
-                            className={styles.delete}
-                            onClick={handleDelete}
+                {currentProject &&
+                  projectTodo.map((element, index) => {
+                    return (
+                      <Draggable
+                        key={`${element}-${index}`}
+                        draggableId={`${element}-${index}`}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <li
+                            key={index}
+                            className="dragItem"
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
                           >
-                            <i className="far fa-trash-alt"></i>
-                          </button>
-                        </li>
-                      )}
-                    </Draggable>
-                  );
-                })}
+                            <div className={styles.icon}>
+                              <i className="fas fa-grip-vertical"></i>
+                            </div>
+                            <span>{element}</span>
+                            <button
+                              type="button"
+                              className={styles.delete}
+                              onClick={handleDelete}
+                            >
+                              <i className="far fa-trash-alt"></i>
+                            </button>
+                          </li>
+                        )}
+                      </Draggable>
+                    );
+                  })}
                 {provided.placeholder}
               </ol>
             );

@@ -14,6 +14,15 @@ class Database {
     return () => cardRef.off();
   }
 
+  readProject(userId, onUpdate, id) {
+    const careRef = firebaseDatabase.ref(`${userId}/users/${id}`);
+    careRef.on("value", (snapshot) => {
+      const value = snapshot.val();
+      value && onUpdate(value);
+    });
+    return () => careRef.off();
+  }
+
   update(userId, project, todo) {
     firebaseDatabase.ref(`${userId}/users/${project.id}`).update({
       todo: todo,
