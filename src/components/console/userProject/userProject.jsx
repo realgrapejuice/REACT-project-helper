@@ -1,14 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./userProject.module.css";
 import { useHistory } from "react-router-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const UserProject = ({ database, userId }) => {
   const history = useHistory();
-  const index = history.location.state.url;
+
   const [currentProject, setCurrentProject] = useState();
 
-  const projectTodo = currentProject && currentProject.todo;
+  let projectTodo = (currentProject && currentProject.todo) || [];
+  const projectName = currentProject && currentProject.projectName;
+  const projectId = history.location.state.url;
+
+  const inputRef = useRef();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const userInput = inputRef.current.value;
+    projectTodo.push(userInput);
+    database.update(userId, currentProject, projectTodo);
+    inputRef.current.value = "";
+  };
 
   // Find delete item index
   const findIndex = (item) => {
@@ -18,7 +30,6 @@ const UserProject = ({ database, userId }) => {
 
   const handleDelete = (event) => {
     const node = event.target.parentNode;
-    const copiedTodo = projectTodo;
     let item;
     let index;
     if (node.className === "dragItem") {
@@ -30,10 +41,9 @@ const UserProject = ({ database, userId }) => {
     } else {
       return;
     }
-    copiedTodo.splice(index, 1);
-    setCurrentProject(copiedTodo);
+    projectTodo.splice(index, 1);
     // database update!
-    database.update(userId, currentProject && currentProject, copiedTodo);
+    database.update(userId, currentProject, projectTodo);
   };
 
   // Relative with dnd
@@ -53,9 +63,9 @@ const UserProject = ({ database, userId }) => {
 
     if (source.droppableId === "droppable") {
       const items = reorder(projectTodo, source.index, destination.index);
-      setCurrentProject(items);
+      projectTodo = items;
       // database update!
-      database.update(userId, currentProject && currentProject, items);
+      database.update(userId, currentProject, items);
     }
   };
 
@@ -66,13 +76,22 @@ const UserProject = ({ database, userId }) => {
       (projects) => {
         setCurrentProject(projects);
       },
-      index
+      projectId
     );
     return () => stopSync();
-  }, [userId, database, setCurrentProject]);
+  });
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.title}>{projectName}</h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <input
+          className={styles.input}
+          ref={inputRef}
+          type="text"
+          placeholder="Add Todo"
+        />
+      </form>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable">
           {(provided) => {
