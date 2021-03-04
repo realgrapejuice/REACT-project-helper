@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import styles from "./form-signup.module.css";
 
 const FormSignUp = ({ authService }) => {
@@ -20,17 +21,22 @@ const FormSignUp = ({ authService }) => {
       <header className={styles.header}>
         <h1>Sign Up</h1>
         <span>Already Have An Account?</span>
-        <a className={styles.button} href="/login">
-          Log In
-        </a>
+        <Link to="/login">
+          <span className={styles.button}>Log In</span>
+        </Link>
       </header>
-      <form className={styles.form} onSubmit={handleCreateAccount}>
+      <form
+        className={styles.form}
+        onSubmit={handleCreateAccount}
+        autoComplete="username"
+      >
         <input
           ref={mailRef}
           type="mail"
           placeholder="Email Address"
           name="email"
           spellCheck="false"
+          autoComplete="user email"
           required
         />
         <input
@@ -39,6 +45,7 @@ const FormSignUp = ({ authService }) => {
           placeholder="Password"
           name="password"
           spellCheck="false"
+          autoComplete="new-password"
           required
         />
         <button type="submit" className={styles.submit}>

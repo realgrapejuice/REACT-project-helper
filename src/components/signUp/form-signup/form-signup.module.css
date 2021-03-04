@@ -27,7 +27,7 @@
   letter-spacing: 0.03em;
 }
 
-.header > .button {
+.button {
   letter-spacing: 0.03em;
   font-size: 1em;
   font-weight: 600;
@@ -36,7 +36,7 @@
   transition: opacity 100ms ease-in;
 }
 
-.header > .button:hover {
+.button:hover {
   opacity: 0.8;
 }
 

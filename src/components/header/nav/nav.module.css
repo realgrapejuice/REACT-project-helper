@@ -3,9 +3,6 @@
   align-items: center;
 }
 
-.about,
-.method,
-.contact,
 .login,
 .sign,
 .console {
@@ -19,7 +16,6 @@
 
 .login {
   font-weight: 700;
-  transition: transform 150ms ease-in;
 }
 
 .sign {
@@ -34,12 +30,4 @@
 
 .sign:hover {
   opacity: 0.8;
-}
-
-.console {
-  position: absolute;
-  right: 10px;
-  top: 85px;
-  font-size: 2rem;
-  color: #ffce00;
 }

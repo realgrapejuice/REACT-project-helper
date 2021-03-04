@@ -16,10 +16,6 @@ const UserProject = ({ database, userId }) => {
   const inputRef = useRef();
   const checkRef = useRef();
 
-  const handleCheckStatus = () => {
-    console.log(checkRef);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const userInput = inputRef.current.value;
@@ -125,7 +121,6 @@ const UserProject = ({ database, userId }) => {
                                 className={styles.icon}
                                 type="checkbox"
                                 id={`check${index}`}
-                                onChange={handleCheckStatus}
                               />
 
                               <label

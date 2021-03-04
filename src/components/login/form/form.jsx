@@ -4,18 +4,15 @@ import Auth from "../aut/auth";
 import styles from "./form.module.css";
 
 const Form = ({ authService }) => {
-  //Router Variable
   const history = useHistory();
-
   //Form Input Variable
   const mailRef = useRef();
   const passwordRef = useRef();
 
-  // Make route change
-  const goToConsole = (userId) => {
+  const goToConsole = (uid) => {
     history.push({
       pathname: `/console`,
-      state: { id: userId },
+      state: { id: uid },
     });
   };
 
@@ -48,6 +45,7 @@ const Form = ({ authService }) => {
           className={styles.mail}
           type="text"
           placeholder="E-mail"
+          autoComplete="off"
           required
         />
         <input
