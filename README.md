@@ -47,9 +47,9 @@
 
 #### 3.4 서드파티 사용자 인증 스크린샷
 
-<p align="center">
-  <img src="" width="50%">
-</p>
+|          Google          |          Github          |
+| :----------------------: | :----------------------: |
+| <img src="https://user-images.githubusercontent.com/66715905/113673073-79d2a780-96f3-11eb-8918-e8a9bc2ece13.gif" width="90%"> | <img src="https://user-images.githubusercontent.com/66715905/113673076-7b9c6b00-96f3-11eb-8db1-3831d6a28a75.gif" width="90%"> |
 
 #### 3.5 프로젝트 콘솔 스크린샷
 
