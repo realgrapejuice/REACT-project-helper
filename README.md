@@ -1,38 +1,96 @@
-## 1. Project Name
+# 프로젝트 관리 앱
 
-Advanced Todo - List
+### 0. 목표로 삼은 부분
 
-## 2. Stack
+- Firebase를 이용해 로그인 기능 구현
+- Firebase를 이용해 회원가입 및 비밀번호 찾기 기능 구현
+- 데이터베이스를 만들고 CRUD 구현
+- 프로젝트의 할 일 목록을 만들고, 프로젝트 별로 할 일을 관리할 수 있는 어플리케이션 구현
 
-1. Language
+### 1. 특징 및 기능
 
-   - HTML5
-   - CSS
-   - Javascript
+- Google Auth, Github Auth를 이용해 로그인을 할 수 있음
+- Firebase Auth를 이용해 외원가입 및 비밀번호 찾기를 할 수 있음
+- 프로젝트의 목록을 한눈에 확인하고 프로젝트 별로 할 일 목록을 관리할 수 있음
+- 입력할 할 일 목록을 Database에 저장하고 CRUD 기능을 이용할 수 있음
+- 작성된 할 일 목록에서 Drag & Drop이 가능하도록 구현해 우선순위 별로 프로젝트를 관리할 수 있음
 
-2. Framework and Library
+### 2. 사용 스택
 
-   - ReactJS
-   - React-router
-   - Firebase (User Auth, Create account, Database)
-   - React-beautiful-dnd
-   - PostCSS
+- HTML(JSX)
+- CSS(POSTCSS)
+- JS(React-hook)
+- React-Router
+- React Beautiful D&D
+- User Authentification(Firebase Auth)
+- Database(Firebase database)
 
-3. Git Repository
-   - [Repository](https://github.com/realgrapejuice/REACT-project-helper)
+### 3. 프로젝트 스크린샷
 
-## 3. Main Functions
+#### 3.1 로그인 스크린샷
 
-1.  Google 계정과 Github 계정으로 로그인 가능
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/66715905/113671692-a980b000-96f1-11eb-9805-a93e7511f5a7.gif" width="50%">
+</p>
 
-2.  Firebase를 이용해 새로운 계정을 만들 수 있음
+#### 3.2 회원가입 스크린샷
 
-3.  Firebase를 이용해 잃어버린 비밀번호를 재설정할 수 있음
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/66715905/113671726-b7cecc00-96f1-11eb-8be7-05daaa06d163.gif" width="50%">
+</p>
 
-4.  React-router를 이용해 라우팅이 가능
+#### 3.3 비밀번호 찾기 스크린샷
 
-5.  Firebase 데이터베이스를 이용해 저장한 투두리스트들이 Console 페이지에 저장
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/66715905/113671817-d3d26d80-96f1-11eb-94e6-8f62efe916f3.gif" width="50%">
+</p>
 
-6.  React-beautiful-dnd의 기본적인 기능을 통해 투두리스트의 드래그 앤 드롭이 가능
+#### 3.4 서드파티 사용자 인증 스크린샷
 
-7.  실시간으로 프로젝트 별 투두리스트를 관리할 수 있음
+<p align="center">
+  <img src="" width="50%">
+</p>
+
+#### 3.5 프로젝트 콘솔 스크린샷
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/66715905/113672095-39265e80-96f2-11eb-82fc-4d515b93a720.png" width="50%">
+</p>
+
+#### 3.6 프로젝트 추가 스크린샷
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/66715905/113672123-45aab700-96f2-11eb-9e5c-7808b31ee8fe.gif" width="50%">
+</p>
+
+#### 3.7 프로젝트 수정 스크린샷
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/66715905/113672163-552a0000-96f2-11eb-9d19-3612642c9fee.gif" width="50%">
+</p>
+
+#### 3.8 프로젝트 삭제 스크린샷
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/66715905/113672174-5824f080-96f2-11eb-8475-59db89fb14f8.gif" width="50%">
+</p>
+
+#### 3.9 데이터베이스 CRUD 스크린샷
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/66715905/113672244-6a069380-96f2-11eb-8bda-504f2ecbd404.gif" width="50%">
+</p>
+
+### 4. 피드백 및 리뷰
+
+#### 4.1 잘한 점
+
+- 사용자 Auth 기능을 구현하며 사용자 관리 원리에 대해 이해할 수 있었음
+- 다양한 페이지의 라우팅을 구현해 화면을 효율적으로 관리함
+- 데이터베이스를 이용해 CRUD를 구현해 기본적인 백엔드가 어떻게 구동되는지 이해할 수 있었음
+
+#### 4.2 아쉬운 점
+
+- 프로젝트가 커질 수록 리엑트의 State관리가 어려웠고, 프로젝트 진행 시 어플리케이션의 디자인패턴이 중요하다는 것을 알게 됨
+- 상태 관리에서 어려움을 겪어 기능적인 측면에서는 제대로 작성하나 코드의 가독성이 떨어진다는 부분이 아쉬웠음
+- 사용자가 편한 어플리케이션을 만들기 위해서는 폼이 전송된 이후에 보여지는 화면처럼 사용 순서적인 측면들도 중요하다는 
